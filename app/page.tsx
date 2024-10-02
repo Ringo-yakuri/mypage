@@ -1,101 +1,166 @@
-import Image from "next/image";
+"use client";
+import { useState } from 'react'
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { Youtube, Twitter, ChevronDown, ChevronUp } from "lucide-react"
+import Link from "next/link"
 
-export default function Home() {
+export default function Component() {
+  const [expandedUpdate, setExpandedUpdate] = useState<number | null>(null);
+
+  const updates = [
+    {
+      title: "神保町マボロシschool「倫獄先生の、法律入門」（10/27(日)）",
+      link: "https://shosen.tokyo/?pid=182759628",
+      details: "法って一体なんのためにあるの？法と道徳の違いは？裁判ではなにを争う？法の悪魔が、深淵なる法の世界の入り口を案内する。"
+    },
+    {
+      title: "倫獄の伏魔殿6丁目",
+      link: "https://ch.nicovideo.jp/kagaku-kaiketu",
+      details: "ニコニコチャンネルにて、「倫獄の伏魔殿6丁目」を毎月放送しています。毎月怪人をゲストに招待して、楽しいトークを繰り広げます。"
+    },
+    {
+      title: "倫獄のブロマガ",
+      link: "https://ch.nicovideo.jp/kagaku-kaiketu",
+      details: "ニコニコチャンネルにて、法律や勉強法に関する幅広いトピックについてのブロマガを毎月配信しています。"
+    }
+  ]
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gradient-to-br from-[#2C3A45] to-[#3E4E5A] text-[#C7CCCF] font-serif transition-colors duration-300">
+      <header className="sticky top-0 z-50 bg-gradient-to-r from-[#2C3A45] to-[#3E4E5A] py-4 shadow-md transition-colors duration-300">
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-[#C7CCCF]">法律怪人　倫獄のポートフォリオ</h1>
+        </div>
+      </header>
+      
+      <main className="container mx-auto px-4 py-8 animate-fadeIn">
+        <div className="grid md:grid-cols-3 gap-8">
+          <Card className="md:col-span-2 p-6 shadow-lg bg-gradient-to-br from-[#09171F] to-[#2C3A45]">
+            <h2 className="text-2xl font-bold mb-4 text-[#CEA17A]">プロフィール</h2>
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="w-64 h-64 md:w-64 md:h-48 mx-auto md:mx-0 relative overflow-hidden rounded-full md:rounded-lg">
+                <img
+                  src="/images/avatar.png"
+                  alt="プロフィール"
+                  className="w-full h-full object-cover border-4 border-[#CEA17A] absolute inset-0 object-top md:object-center"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <p className="mb-4 text-[#C7CCCF] leading-relaxed">
+                  法律を専門とするコンテンツクリエイターとして、複雑な法的概念を誰もが理解できるようにすることを目指しています。法律と日常生活の架け橋となるような魅力的なコンテンツを作成しています。
+                </p>
+                <p className="text-[#C7CCCF] leading-relaxed">
+                  公開講演や様々な機関やクリエイターとのコラボレーションを通じて、法的リテラシーの向上にも取り組んでいます。
+                </p>
+                <p className="text-[#C7CCCF] leading-relaxed">
+                  現在、お仕事は薬理凶室経由のご依頼のみお受けしております。詳しくは薬理凶室までお問い合わせください。
+                </p>
+              </div>
+            </div>
+          </Card>
+          
+          <Card className="p-6 shadow-lg bg-[#3E4E5A]">
+            <h2 className="text-2xl font-bold mb-4 text-[#CEA17A]">最新情報</h2>
+            <ul className="space-y-4 text-[#C7CCCF]">
+              {updates.map((update, index) => (
+                <li key={index} className="border-b border-[#CEA17A] pb-2">
+                  <div className="flex justify-between items-center cursor-pointer" onClick={() => setExpandedUpdate(expandedUpdate === index ? null : index)}>
+                    <Link href={update.link} target="_blank" rel="noopener noreferrer" className="hover:underline">{update.title}</Link>
+                    {expandedUpdate === index ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+                  </div>
+                  {expandedUpdate === index && (
+                    <p className="mt-2 text-sm">{update.details}</p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </Card>
+          
+          <Card className="md:col-span-2 p-6 shadow-lg bg-[#2C3A45]">
+            <h2 className="text-2xl font-bold mb-4 text-[#CEA17A]">過去のお仕事</h2>
+            <ul className="list-disc list-inside space-y-2 text-[#C7CCCF]">
+              <li>講演：「刑法ってなに？刑法典を読んでみよう」板橋区立教育科学館　2024年9月22日</li>
+              <li>出演：ニコニコ超会議　2024年4月28日</li>
+              <li>公開研究会：Tokyo Education Show at 東京学芸大学　2023年10月12日</li>
+              <li>出演：ニコニコ超会議　2023年4月30日</li>
+              <li>共著書：『アリエナイ理科ノ大事典Ⅲ』三才ブックス 2023年</li>
+            </ul>
+          </Card>
+          
+          <Card className="p-6 shadow-lg bg-[#2C3A45]">
+            <h2 className="text-2xl font-bold mb-4 text-[#CEA17A]">コネクト</h2>
+            <div className="grid grid-cols-1 gap-4">
+              <div className="p-4 rounded-lg shadow bg-[#3E4E5A]">
+                <h3 className="font-bold mb-2 text-[#C7CCCF]">科学はすべてを解決する!!</h3>
+                <div className="aspect-video mb-2">
+                  <img
+                    src="/images/YouTube.jpeg"
+                    alt="YouTubeチャンネルサムネイル"
+                    className="w-full h-full object-cover rounded"
+                    loading="lazy"
+                  />
+                </div>
+                <Link href="https://www.youtube.com/@krr" passHref>
+                  <Button className="w-full bg-[#CEA17A] hover:bg-[#B69D74] text-[#1F2839]">
+                    <Youtube className="mr-2 h-4 w-4" /> Youtubeチャンネル
+                  </Button>
+                </Link>
+              </div>
+              <div className="p-4 rounded-lg shadow bg-[#3E4E5A]">
+                <h3 className="font-bold mb-2 text-[#C7CCCF]">科学はすべてを解決する!!ニコニコ秘密基地</h3>
+                <div className="aspect-video mb-2">
+                  <img
+                    src="/images/niconico.jpeg"
+                    alt="ニコニコチャンネルサムネイル"
+                    className="w-full h-full object-cover rounded"
+                    loading="lazy"
+                  />
+                </div>
+                <a href="https://ch.nicovideo.jp/kagaku-kaiketu" target="_blank" rel="noopener noreferrer">
+                  <Button className="w-full bg-[#CEA17A] hover:bg-[#B69D74] text-[#1F2839]">
+                    <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M21 5H3v14h18V5zm-2 12H5V7h14v10zm-5-5c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-7 0c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm14 0c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2z" />
+                    </svg>
+                    ニコニコチャンネル
+                  </Button>
+                </a>
+              </div>
+              <a href="https://twitter.com/ringo_yakuri" target="_blank" rel="noopener noreferrer">
+                <Button className="w-full bg-[#C7CCCF] hover:bg-[#BFC1C6] text-[#2C3A45]">
+                  <Twitter className="mr-2 h-4 w-4" /> Twitter
+                </Button>
+              </a>
+              <a href="https://bsky.app/profile/ringoyakuri.bsky.social" target="_blank" rel="noopener noreferrer">
+                <Button className="w-full bg-[#C7CCCF] hover:bg-[#BFC1C6] text-[#2C3A45]">
+                  <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm-1-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm5 7h-2v-3h-2v-3h4v6z" />
+                  </svg>
+                  Bluesky
+                </Button>
+              </a>
+            </div>
+          </Card>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      
+      <footer className="bg-gradient-to-r from-[#2C3A45] to-[#3E4E5A] py-6 mt-8">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-[#C7CCCF]">
+            &copy; 2024 倫獄. All rights reserved
+            <a 
+              href="https://www.youtube.com/@ringowarehouse" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="ml-1 text-[#C7CCCF] hover:text-[#CEA17A] transition-colors duration-300"
+              aria-label="Hidden link"
+            >
+              .
+            </a>
+          </p>
+        </div>
       </footer>
     </div>
-  );
+  )
 }
