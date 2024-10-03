@@ -48,7 +48,7 @@ export default function Component() {
                 />
               </div>
               <div>
-              <p className="mb-4 text-[#C7CCCF] leading-relaxed">
+              <p className="mb-4 text-[#C7CCCF] leading-relaxed font-bold">
               法律を学び、理解する楽しさを提供する専門家
                 </p>
                 <p className="mb-4 text-[#C7CCCF] leading-relaxed">
