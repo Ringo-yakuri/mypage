@@ -10,6 +10,11 @@ export default function Component() {
 
   const updates = [
     {
+      title: "怪人リアル授業：法で遊んでみよう",
+      link: "https://ch.nicovideo.jp/kagaku-kaiketu",
+      details: "法律にとってとても大事な「言葉」の使い方について、ワークショップ形式で学びます。"
+    },
+     {
       title: "倫獄の伏魔殿6丁目",
       link: "https://ch.nicovideo.jp/kagaku-kaiketu",
       details: "ニコニコチャンネルにて、「倫獄の伏魔殿6丁目」を毎月放送しています。毎月怪人をゲストに招待して、楽しいトークを繰り広げます。"
