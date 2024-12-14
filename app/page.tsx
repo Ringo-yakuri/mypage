@@ -11,7 +11,7 @@ export default function Component() {
   const updates = [
     {
       title: "怪人リアル授業：法で遊んでみよう",
-      link: "https://ch.nicovideo.jp/kagaku-kaiketu",
+      link: "https://www.itbs-sem.jp/club/detail?id=8823",
       details: "法律にとってとても大事な「言葉」の使い方について、ワークショップ形式で学びます。"
     },
      {
