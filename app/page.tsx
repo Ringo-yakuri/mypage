@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Youtube, Twitter, ChevronDown, ChevronUp } from "lucide-react"
+import { Youtube, Twitter, ChevronDown, ChevronUp, Gamepad2, Tv, Wind, CircleUserRound, Sun, Footprints, Bird } from "lucide-react"
 import Link from "next/link"
 
 export default function Component() {
@@ -121,9 +121,7 @@ export default function Component() {
                 </div>
                 <a href="https://ch.nicovideo.jp/kagaku-kaiketu" target="_blank" rel="noopener noreferrer">
                   <Button className="w-full bg-[#CEA17A] hover:bg-[#B69D74] text-[#1F2839]">
-                    <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M21 5H3v14h18V5zm-2 12H5V7h14v10zm-5-5c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-7 0c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm14 0c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2z" />
-                    </svg>
+                  <Tv className="mr-2 h-4 w-4" />
                     ニコニコチャンネル
                   </Button>
                 </a>
@@ -135,10 +133,14 @@ export default function Component() {
               </a>
               <a href="https://bsky.app/profile/ringoyakuri.bsky.social" target="_blank" rel="noopener noreferrer">
                 <Button className="w-full bg-[#C7CCCF] hover:bg-[#BFC1C6] text-[#2C3A45]">
-                  <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm-1-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm5 7h-2v-3h-2v-3h4v6z" />
-                  </svg>
+                <Bird className="mr-2 h-4 w-4" />
                   Bluesky
+                </Button>
+              </a>
+              <a href="https://mixi.social/@ringo_yakuri" target="_blank" rel="noopener noreferrer">
+                <Button className="w-full bg-[#C7CCCF] hover:bg-[#BFC1C6] text-[#2C3A45]">
+                <Footprints className="mr-2 h-4 w-4" />
+                mixi2
                 </Button>
               </a>
             </div>
