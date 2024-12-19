@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Youtube, Twitter, ChevronDown, ChevronUp, Gamepad2, Tv, Wind, CircleUserRound, Sun, Footprints, Bird } from "lucide-react"
+import { Youtube, Twitter, ChevronDown, ChevronUp, Tv, Footprints, Bird } from "lucide-react"
 import Link from "next/link"
 
 export default function Component() {
