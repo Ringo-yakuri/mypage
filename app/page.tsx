@@ -2,8 +2,10 @@
 import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Youtube, Twitter, ChevronDown, ChevronUp, Tv, Footprints, Bird } from "lucide-react"
+import { ChevronDown, ChevronUp, Footprints } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
+import { SiYoutube, SiNiconico, SiX, SiBluesky } from '@icons-pack/react-simple-icons'
 
 export default function Component() {
   const [expandedUpdate, setExpandedUpdate] = useState<number | null>(null);
@@ -34,14 +36,16 @@ export default function Component() {
           <Card className="md:col-span-2 p-6 shadow-lg bg-gradient-to-br from-[#09171F] to-[#2C3A45]">
             <h2 className="text-2xl font-bold mb-4 text-[#CEA17A]">プロフィール</h2>
             <div className="flex flex-col md:flex-row gap-6">
-              <div className="w-64 h-64 md:w-64 md:h-48 mx-auto md:mx-0 relative overflow-hidden rounded-full md:rounded-lg">
-                <img
-                  src="/images/avatar.png"
-                  alt="プロフィール"
-                  className="w-full h-full object-cover border-4 border-[#CEA17A] absolute inset-0 object-top md:object-center"
-                  loading="lazy"
+            <div className="w-64 h-64 md:w-64 md:h-48 mx-auto md:mx-0 relative border-2 border-[#CEA17A] rounded-full md:rounded-lg overflow-hidden">
+               <Image
+                src="/images/avatar.png"
+               alt="プロフィール"
+                fill
+               className="object-cover object-top md:object-center"
+               sizes="(max-width: 768px) 256px, 192px"
+               priority
                 />
-              </div>
+              </div> 
               <div>
               <p className="mb-4 text-[#C7CCCF] leading-relaxed font-bold">
               法律を学び、理解する楽しさを提供する専門家
@@ -76,8 +80,8 @@ export default function Component() {
           <Card className="md:col-span-2 p-6 shadow-lg bg-[#2C3A45]">
             <h2 className="text-2xl font-bold mb-4 text-[#CEA17A]">過去のお仕事</h2>
             <ul className="list-disc list-inside space-y-2 text-[#C7CCCF]">
-            <li>講演：「法で遊んでみよう」板橋区立教育科学館　2024年12月22日</li>
-　            <li>講演：神保町マボロシschool「倫獄先生の、法律入門」　2024年10月27日</li>
+              <li>講演：「法で遊んでみよう」板橋区立教育科学館　2024年12月22日</li>
+              <li>講演：神保町マボロシschool「倫獄先生の、法律入門」　2024年10月27日</li>
               <li>講演：「刑法ってなに？刑法典を読んでみよう」板橋区立教育科学館　2024年9月22日</li>
               <li>出演：ニコニコ超会議　2024年4月28日</li>
               <li>公開研究会：Tokyo Education Show at 東京学芸大学　2023年10月12日</li>
@@ -91,45 +95,47 @@ export default function Component() {
             <div className="grid grid-cols-1 gap-4">
               <div className="p-4 rounded-lg shadow bg-[#3E4E5A]">
                 <h3 className="font-bold mb-2 text-[#C7CCCF]">科学はすべてを解決する!!</h3>
-                <div className="aspect-video mb-2">
-                  <img
+                <div className="aspect-video mb-2 relative">
+                <Image
                     src="/images/YouTube.jpeg"
                     alt="YouTubeチャンネルサムネイル"
-                    className="w-full h-full object-cover rounded"
-                    loading="lazy"
+                    fill
+                    className="object-cover rounded"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
                 <Link href="https://www.youtube.com/@krr" passHref>
                   <Button className="w-full bg-[#CEA17A] hover:bg-[#B69D74] text-[#1F2839]">
-                    <Youtube className="mr-2 h-4 w-4" /> Youtubeチャンネル
+                    <SiYoutube className="mr-2 h-4 w-4" /> Youtubeチャンネル
                   </Button>
                 </Link>
               </div>
               <div className="p-4 rounded-lg shadow bg-[#3E4E5A]">
                 <h3 className="font-bold mb-2 text-[#C7CCCF]">科学はすべてを解決する!!ニコニコ秘密基地</h3>
-                <div className="aspect-video mb-2">
-                  <img
+                <div className="aspect-video mb-2 relative">
+                <Image
                     src="/images/niconico.jpeg"
                     alt="ニコニコチャンネルサムネイル"
-                    className="w-full h-full object-cover rounded"
-                    loading="lazy"
+                    fill
+                    className="object-cover rounded"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
                 <a href="https://ch.nicovideo.jp/kagaku-kaiketu" target="_blank" rel="noopener noreferrer">
                   <Button className="w-full bg-[#CEA17A] hover:bg-[#B69D74] text-[#1F2839]">
-                  <Tv className="mr-2 h-4 w-4" />
+                  <SiNiconico className="mr-2 h-4 w-4" />
                     ニコニコチャンネル
                   </Button>
                 </a>
               </div>
               <a href="https://twitter.com/ringo_yakuri" target="_blank" rel="noopener noreferrer">
                 <Button className="w-full bg-[#C7CCCF] hover:bg-[#BFC1C6] text-[#2C3A45]">
-                  <Twitter className="mr-2 h-4 w-4" /> Twitter
+                  <SiX className="mr-2 h-4 w-4" /> Twitter
                 </Button>
               </a>
               <a href="https://bsky.app/profile/ringoyakuri.bsky.social" target="_blank" rel="noopener noreferrer">
                 <Button className="w-full bg-[#C7CCCF] hover:bg-[#BFC1C6] text-[#2C3A45]">
-                <Bird className="mr-2 h-4 w-4" />
+                <SiBluesky className="mr-2 h-4 w-4" />
                   Bluesky
                 </Button>
               </a>
