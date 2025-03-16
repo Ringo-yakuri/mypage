@@ -32,7 +32,7 @@ export default function Component() {
     <div className="min-h-screen bg-gradient-to-br from-[#2C3A45] to-[#3E4E5A] text-[#C7CCCF] font-serif transition-colors duration-300">
       <header className="sticky top-0 z-50 bg-gradient-to-r from-[#2C3A45] to-[#3E4E5A] py-4 shadow-md transition-colors duration-300">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-[#C7CCCF]">法律怪人　倫獄のポートフォリオ</h1>
+          <h1 className="text-2xl font-bold text-[#C7CCCF]">法律怪人 倫獄のポートフォリオ</h1>
         </div>
       </header>
       
