@@ -20,7 +20,7 @@ export default function Component() {
       title: "倫獄のブロマガ",
       link: "https://ch.nicovideo.jp/kagaku-kaiketu",
       details: "ニコニコチャンネルにて、法律や勉強法に関する幅広いトピックについてのブロマガを毎月配信しています。"
-    }
+    },
     {
       title: "ニコニコ超会議2025",
       link: "https://chokaigi.jp/2025/plan/arienai/#超アリエナイ理科ノ実験ステージ",
