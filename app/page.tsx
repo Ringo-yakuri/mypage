@@ -20,11 +20,6 @@ export default function Component() {
       title: "倫獄のブロマガ",
       link: "https://ch.nicovideo.jp/kagaku-kaiketu",
       details: "ニコニコチャンネルにて、法律や勉強法に関する幅広いトピックについてのブロマガを毎月配信しています。"
-    },
-    {
-      title: "ニコニコ超会議2025",
-      link: "https://chokaigi.jp/2025/plan/arienai/#超アリエナイ理科ノ実験ステージ",
-      details: "超アリエナイ理科ノ実験2025 Supported by 三井化学 DAY2に出演します。"
     }
   ]
 
@@ -85,6 +80,7 @@ export default function Component() {
           <Card className="md:col-span-2 p-6 shadow-lg bg-[#2C3A45]">
             <h2 className="text-2xl font-bold mb-4 text-[#CEA17A]">過去のお仕事</h2>
             <ul className="list-disc list-inside space-y-2 text-[#C7CCCF]">
+              <li>出演：ニコニコ超会議　2025年4月27日</li>
               <li>講演：「法で遊んでみよう」板橋区立教育科学館　2024年12月22日</li>
               <li>講演：神保町マボロシschool「倫獄先生の、法律入門」　2024年10月27日</li>
               <li>講演：「刑法ってなに？刑法典を読んでみよう」板橋区立教育科学館　2024年9月22日</li>
