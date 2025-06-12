@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ChevronDown, ChevronUp, Footprints } from "lucide-react"
-import Link from "next/link"
 import Image from "next/image"
 import { SiYoutube, SiNiconico, SiX, SiBluesky } from '@icons-pack/react-simple-icons'
 
@@ -66,7 +65,7 @@ export default function Component() {
               {updates.map((update, index) => (
                 <li key={index} className="border-b border-[#CEA17A] pb-2">
                   <div className="flex justify-between items-center cursor-pointer" onClick={() => setExpandedUpdate(expandedUpdate === index ? null : index)}>
-                    <Link href={update.link} target="_blank" rel="noopener noreferrer" className="hover:underline">{update.title}</Link>
+                    <a href={update.link} target="_blank" rel="noopener noreferrer" className="hover:underline">{update.title}</a>
                     {expandedUpdate === index ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
                   </div>
                   {expandedUpdate === index && (
@@ -105,11 +104,11 @@ export default function Component() {
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
-                <Link href="https://www.youtube.com/@krr" passHref>
+                <a href="https://www.youtube.com/@krr" target="_blank" rel="noopener noreferrer">
                   <Button className="w-full bg-[#CEA17A] hover:bg-[#B69D74] text-[#1F2839]">
                     <SiYoutube className="mr-2 h-4 w-4" /> Youtubeチャンネル
                   </Button>
-                </Link>
+                </a>
               </div>
               <div className="p-4 rounded-lg shadow bg-[#3E4E5A]">
                 <h3 className="font-bold mb-2 text-[#C7CCCF]">科学はすべてを解決する!!ニコニコ秘密基地</h3>
