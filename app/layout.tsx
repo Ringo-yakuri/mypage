@@ -16,6 +16,24 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "倫獄のポートフォリオ",
   description: "薬理凶室に所属する法律怪人倫獄のこれまでのお仕事とお仕事のお知らせ",
+  openGraph: {
+    title: "倫獄のポートフォリオ",
+    description:
+      "薬理凶室に所属する法律怪人倫獄のこれまでのお仕事とお仕事のお知らせ",
+    url: "https://example.com",
+    images: [
+      {
+        url: "/images/avatar.png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "倫獄のポートフォリオ",
+    description:
+      "薬理凶室に所属する法律怪人倫獄のこれまでのお仕事とお仕事のお知らせ",
+    images: ["/images/avatar.png"],
+  },
 };
 
 export default function RootLayout({
