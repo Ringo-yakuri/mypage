@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { SiYoutube, SiNiconico, SiX, SiBluesky } from "@icons-pack/react-simple-icons";
+import { SiYoutube, SiNiconico, SiX, SiBluesky, SiTwitch } from "@icons-pack/react-simple-icons";
 import { Footprints } from "lucide-react";
 
 export default function ConnectLinks() {
@@ -53,6 +53,11 @@ export default function ConnectLinks() {
           <Button className="w-full bg-[#C7CCCF] hover:bg-[#BFC1C6] text-[#2C3A45]">
             <SiBluesky className="mr-2 h-4 w-4" />
             Bluesky
+          </Button>
+        </a>
+        <a href="https://www.twitch.tv/ringo_sensei" target="_blank" rel="noopener noreferrer">
+          <Button className="w-full bg-[#C7CCCF] hover:bg-[#BFC1C6] text-[#2C3A45]">
+            <SiTwitch className="mr-2 h-4 w-4" /> Twitch
           </Button>
         </a>
         <a href="https://mixi.social/@ringo_yakuri" target="_blank" rel="noopener noreferrer">
