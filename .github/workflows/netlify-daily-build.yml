@@ -1,0 +1,20 @@
+name: Netlify Daily Build
+
+on:
+  schedule:
+    - cron: "17 19 * * *"   # 毎日04:17 JST（= 19:17 UTC）
+  workflow_dispatch:        # 手動実行も可能にする
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Netlify Build
+        env:
+          URL: ${{ secrets.NETLIFY_BUILD_HOOK_URL }}
+        run: |
+          curl --fail-with-body -sS -X POST \
+            -H "Content-Type: application/json" \
+            -d '{}' "$URL?trigger_title=scheduled%20daily%20build"
+
