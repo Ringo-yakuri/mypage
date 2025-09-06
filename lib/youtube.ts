@@ -76,7 +76,7 @@ export async function getPlaylistVideos(opts: FetchOptions = {}): Promise<VideoI
       results.push({
         id: vid,
         title,
-        publishedAt: published,
+        publishedAt: published ?? '',
         thumbnailUrl: thumb,
         url: `https://www.youtube.com/watch?v=${vid}`,
       })
