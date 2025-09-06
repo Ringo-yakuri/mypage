@@ -87,6 +87,18 @@ export async function getPlaylistVideos(opts: FetchOptions = {}): Promise<VideoI
     if (!pageToken) break
   }
 
-  // Preserve YouTube playlist order (no additional sorting)
-  return results
+  // Preserve YouTube playlist order, but pin the latest 2 by publishedAt to the front
+  const toTime = (s: string) => {
+    const t = Date.parse(s)
+    return Number.isNaN(t) ? -Infinity : t
+  }
+  const latestFirst = [...results].sort((a, b) => toTime(b.publishedAt) - toTime(a.publishedAt))
+  const pinned = latestFirst.slice(0, 2)
+  const pinnedIds = new Set(pinned.map((v) => v.id))
+  const merged: VideoItem[] = []
+  for (const v of pinned) merged.push(v)
+  for (const v of results) {
+    if (!pinnedIds.has(v.id)) merged.push(v)
+  }
+  return merged
 }
