@@ -1,3 +1,9 @@
 [build]
 # Use Ubuntu Noble 24.04 (current default)
 image = "noble"
+
+[[redirects]]
+from = "/playlist"
+to = "https://www.youtube.com/playlist?list=PLQv1KiNtBAtmrCL6qdE4LjjwrGPIeuteF"
+status = 301
+force = true

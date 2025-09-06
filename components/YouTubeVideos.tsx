@@ -15,7 +15,7 @@ export default function YouTubeVideos({ videos, initialCount = 24, step = 8 }: P
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl font-bold text-[#CEA17A]">出演動画</h2>
         <a
-          href="https://www.youtube.com/playlist?list=PLQv1KiNtBAtmrCL6qdE4LjjwrGPIeuteF"
+          href="/playlist"
           target="_blank"
           rel="noopener noreferrer"
           className="text-sm text-[#CEA17A] hover:text-[#B69D74] underline-offset-2 hover:underline"
