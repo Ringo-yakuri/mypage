@@ -7,6 +7,32 @@ type FetchOptions = {
   max?: number
 }
 
+type YTThumbnail = { url?: string }
+type YTThumbnails = {
+  default?: YTThumbnail
+  medium?: YTThumbnail
+  high?: YTThumbnail
+  maxres?: YTThumbnail
+}
+type YTSnippet = {
+  title?: string
+  publishedAt?: string
+  resourceId?: { videoId?: string }
+  thumbnails?: YTThumbnails
+}
+type YTContentDetails = {
+  videoId?: string
+  videoPublishedAt?: string
+}
+type YTPlaylistItem = {
+  snippet?: YTSnippet
+  contentDetails?: YTContentDetails
+}
+type YTPlaylistItemsResponse = {
+  items?: YTPlaylistItem[]
+  nextPageToken?: string
+}
+
 export async function getPlaylistVideos(opts: FetchOptions = {}): Promise<VideoItem[]> {
   const key = process.env.YOUTUBE_API_KEY
   const playlistId = process.env.YOUTUBE_PLAYLIST_ID
@@ -32,9 +58,9 @@ export async function getPlaylistVideos(opts: FetchOptions = {}): Promise<VideoI
       const text = await res.text()
       throw new Error(`YouTube API error: ${res.status} ${res.statusText} ${text}`)
     }
-    const data = await res.json()
+    const data: YTPlaylistItemsResponse = await res.json()
 
-    const items = (data.items ?? []) as any[]
+    const items = data.items ?? []
     for (const it of items) {
       const vid = it.contentDetails?.videoId || it.snippet?.resourceId?.videoId
       const title = it.snippet?.title || ''
