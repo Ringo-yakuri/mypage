@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
+const siteUrl = process.env.SITE_URL || "http://localhost:3000";
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -16,6 +18,21 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "倫獄のポートフォリオ",
   description: "薬理凶室に所属する法律怪人倫獄のこれまでのお仕事とお仕事のお知らせ",
+  metadataBase: new URL(siteUrl),
+  openGraph: {
+    type: 'website',
+    title: '倫獄のポートフォリオ',
+    description:
+      '薬理凶室に所属する法律怪人倫獄のこれまでのお仕事とお仕事のお知らせ',
+    locale: 'ja_JP',
+    siteName: '倫獄のポートフォリオ',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '倫獄のポートフォリオ',
+    description:
+      '薬理凶室に所属する法律怪人倫獄のこれまでのお仕事とお仕事のお知らせ',
+  },
 };
 
 export default function RootLayout({

@@ -1,10 +1,27 @@
-"use client";
 import ProfileCard from "@/components/ProfileCard";
 import Updates from "@/components/Updates";
 import Works from "@/components/Works";
 import ConnectLinks from "@/components/ConnectLinks";
+import YouTubeVideos from "@/components/YouTubeVideos";
+import { getPlaylistVideos } from "@/lib/youtube";
+import Script from "next/script";
 
-export default function Component() {
+export const dynamic = "force-static";
+
+export default async function Component() {
+  const videos = await getPlaylistVideos();
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: '出演動画一覧',
+    hasPart: videos.slice(0, 24).map((v) => ({
+      '@type': 'VideoObject',
+      name: v.title,
+      thumbnailUrl: v.thumbnailUrl,
+      uploadDate: v.publishedAt,
+      url: v.url,
+    })),
+  };
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#2C3A45] to-[#3E4E5A] text-[#C7CCCF] font-serif transition-colors duration-300">
       <header className="sticky top-0 z-50 bg-gradient-to-r from-[#2C3A45] to-[#3E4E5A] py-4 shadow-md transition-colors duration-300">
@@ -19,6 +36,7 @@ export default function Component() {
           <Updates />
           <Works />
           <ConnectLinks />
+          <YouTubeVideos videos={videos} initialCount={4} step={8} />
         </div>
       </main>
 
@@ -38,6 +56,7 @@ export default function Component() {
           </p>
         </div>
       </footer>
+      <Script id="videos-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </div>
   );
 }
