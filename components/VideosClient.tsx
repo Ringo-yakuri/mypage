@@ -21,13 +21,28 @@ export default function VideosClient({ videos, initialCount = 4, step = 4 }: Pro
 
     const compute = () => {
       const style = window.getComputedStyle(el);
-      const gap = parseFloat(style.columnGap || style.gap || "0") || 0;
-      const first = el.querySelector<HTMLElement>(":scope > *");
-      if (!first) {
-        setCols(1);
-        return;
+      // 1) CSS Gridの列数を直接読む（最優先・正確）
+      const gtc = style.gridTemplateColumns;
+      if (gtc && gtc !== "none") {
+        // 多くの環境で `minmax(0px, 1fr)` の繰り返しになる
+        const byMinmax = (gtc.match(/minmax\(/g) || []).length;
+        if (byMinmax > 0) {
+          setCols(byMinmax);
+          return;
+        }
+        // フォールバック: スペース区切りのトラック数をざっくり数える
+        const tracks = gtc.trim().split(/\s+/).length;
+        if (tracks > 0) {
+          setCols(tracks);
+          return;
+        }
       }
-      const container = el.clientWidth;
+
+      // 2) フォールバック: 子要素幅 + gap から推定（Flexでも可）
+      const gap = parseFloat(style.columnGap || style.gap || "0") || 0;
+      const first = (el.firstElementChild as HTMLElement | null) ?? undefined;
+      if (!first) { setCols(1); return; }
+      const container = el.clientWidth || 1;
       const card = first.clientWidth || 1;
       const calculated = Math.max(1, Math.floor((container + gap - 0.5) / (card + gap)));
       setCols(calculated);
