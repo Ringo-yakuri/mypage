@@ -62,10 +62,15 @@ export default function VideosClient({ videos, initialCount = 4, step = 4 }: Pro
   // 最低4件を満たしつつ、列数の倍数に切り上げ
   const adjustedInitial = useMemo(() => {
     const min = 4;
-    const base = Math.max(initialCount, min);
     const c = Math.max(1, cols);
-    const rounded = Math.ceil(base / c) * c;
-    return Math.min(videos.length, Math.max(min, rounded));
+    // 指定値を尊重しつつ最低4件。1列時は最大4件に抑える
+    let base = Math.max(min, Math.min(initialCount, videos.length));
+    if (c === 1) {
+      base = Math.min(base, 4);
+    }
+    // 列数の倍数に丸め下げ
+    const roundedDown = Math.max(min, Math.floor(base / c) * c);
+    return Math.min(videos.length, roundedDown);
   }, [initialCount, cols, videos.length]);
 
   // “もっと見る”でも行が崩れないよう、列数の倍数で追加
