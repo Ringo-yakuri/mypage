@@ -36,7 +36,7 @@ export default async function Component() {
           <Updates />
           <Works />
           <ConnectLinks latestVideo={videos[0]} />
-          <YouTubeVideos videos={videos} initialCount={4} step={8} />
+          <YouTubeVideos videos={videos} initialCount={6} step={12} />
         </div>
       </main>
 
