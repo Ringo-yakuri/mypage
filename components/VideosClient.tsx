@@ -63,9 +63,11 @@ export default function VideosClient({ videos, initialCount = 4, step = 4 }: Pro
   const adjustedInitial = useMemo(() => {
     const c = Math.max(1, cols);
     // 仕様: 1列=4件、2列=4件、3列以上=2行(=2*c件)
-    const target = c <= 2 ? 4 : 2 * c;
-    return Math.min(videos.length, target);
-  }, [cols, videos.length]);
+    const baseline = c <= 2 ? 4 : 2 * c;
+    const desired = Math.max(baseline, initialCount);
+    const aligned = Math.ceil(desired / c) * c;
+    return Math.min(videos.length, aligned);
+  }, [cols, initialCount, videos.length]);
 
   // “もっと見る”でも行が崩れないよう、列数の倍数で追加
   const adjustedStep = useMemo(() => {
