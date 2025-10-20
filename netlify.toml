@@ -1,3 +1,8 @@
 [build]
 # Use Ubuntu Noble 24.04 (current default)
 image = "noble"
+command = "npm run build"
+publish = "out"
+
+[build.environment]
+SECRETS_SCAN_OMIT_KEYS = "YOUTUBE_PLAYLIST_ID"

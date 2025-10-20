@@ -10,6 +10,11 @@ type Props = {
 };
 
 // Server component; receives videos fetched at build time
+const playlistId = process.env.YOUTUBE_PLAYLIST_ID
+const playlistUrl = playlistId
+  ? `https://www.youtube.com/playlist?list=${encodeURIComponent(playlistId)}`
+  : 'https://www.youtube.com'
+
 export default function YouTubeVideos({ videos, initialCount = 24, step = 8 }: Props) {
   return (
     <Card className="md:col-span-3 p-6 shadow-lg bg-gradient-to-br from-[#09171F] to-[#2C3A45]">
@@ -20,7 +25,7 @@ export default function YouTubeVideos({ videos, initialCount = 24, step = 8 }: P
           size="sm"
           className="bg-[#CEA17A] hover:bg-[#B69D74] text-[#1F2839]"
         >
-          <a href="/playlist" target="_blank" rel="noopener noreferrer">
+          <a href={playlistUrl} target="_blank" rel="noopener noreferrer">
             プレイリスト
           </a>
         </Button>
