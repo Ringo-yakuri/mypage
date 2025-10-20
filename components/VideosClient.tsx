@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import VideoCard from "@/components/VideoCard";
 import { VideoItem } from "@/types/video";
 import { Button } from "@/components/ui/button";
@@ -10,94 +10,84 @@ type Props = {
   step?: number;
 };
 
-export default function VideosClient({ videos, initialCount = 4, step = 4 }: Props) {
-  const gridRef = useRef<HTMLDivElement | null>(null);
+const breakpointColumns = [
+  { query: "(min-width: 1280px)", columns: 4 },
+  { query: "(min-width: 1024px)", columns: 3 },
+  { query: "(min-width: 640px)", columns: 2 },
+];
 
-  // 推定列数を算出（Grid/Flexいずれでも利用可能）
-  const [cols, setCols] = useState(1);
-  useLayoutEffect(() => {
-    const el = gridRef.current;
-    if (!el) return;
+function useColumns() {
+  const [columns, setColumns] = useState(1);
 
-    const compute = () => {
-      const style = window.getComputedStyle(el);
-      // 1) CSS Gridの列数を直接読む（最優先・正確）
-      const gtc = style.gridTemplateColumns;
-      if (gtc && gtc !== "none") {
-        // 多くの環境で `minmax(0px, 1fr)` の繰り返しになる
-        const byMinmax = (gtc.match(/minmax\(/g) || []).length;
-        if (byMinmax > 0) {
-          setCols(byMinmax);
-          return;
-        }
-        // フォールバック: スペース区切りのトラック数をざっくり数える
-        const tracks = gtc.trim().split(/\s+/).length;
-        if (tracks > 0) {
-          setCols(tracks);
-          return;
-        }
-      }
+  useEffect(() => {
+    if (typeof window === "undefined") return;
 
-      // 2) フォールバック: 子要素幅 + gap から推定（Flexでも可）
-      const gap = parseFloat(style.columnGap || style.gap || "0") || 0;
-      const first = (el.firstElementChild as HTMLElement | null) ?? undefined;
-      if (!first) { setCols(1); return; }
-      const container = el.clientWidth || 1;
-      const card = first.clientWidth || 1;
-      const calculated = Math.max(1, Math.floor((container + gap - 0.5) / (card + gap)));
-      setCols(calculated);
+    const mediaQueries = breakpointColumns.map((bp) => ({
+      ...bp,
+      mq: window.matchMedia(bp.query),
+    }));
+
+    const update = () => {
+      const match = mediaQueries.find(({ mq }) => mq.matches);
+      setColumns(match?.columns ?? 1);
     };
 
-    const ro = new ResizeObserver(compute);
-    ro.observe(el);
-    compute();
+    const cleanups = mediaQueries.map(({ mq }) => {
+      const handler = () => update();
+      if (typeof mq.addEventListener === "function") {
+        mq.addEventListener("change", handler);
+        return () => mq.removeEventListener("change", handler);
+      }
+      mq.addListener(handler);
+      return () => mq.removeListener(handler);
+    });
 
-    window.addEventListener("resize", compute);
+    update();
+
     return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", compute);
+      cleanups.forEach((cleanup) => cleanup());
     };
   }, []);
 
-  // 最低4件を満たしつつ、列数の倍数に切り上げ
-  const adjustedInitial = useMemo(() => {
-    const c = Math.max(1, cols);
-    // 仕様: 1列=4件、2列=4件、3列以上=2行(=2*c件)
-    const baseline = c <= 2 ? 4 : 2 * c;
-    const desired = Math.max(baseline, initialCount);
-    const aligned = Math.ceil(desired / c) * c;
-    return Math.min(videos.length, aligned);
-  }, [cols, initialCount, videos.length]);
+  return columns;
+}
 
-  // “もっと見る”でも行が崩れないよう、列数の倍数で追加
-  const adjustedStep = useMemo(() => {
-    const c = Math.max(1, cols);
-    return Math.max(c, Math.ceil(step / c) * c);
-  }, [step, cols]);
+export default function VideosClient({ videos, initialCount = 4, step = 4 }: Props) {
+  const total = videos.length;
+  const columns = useColumns();
+  const baseline = columns <= 2 ? 4 : columns * 2;
+  const safeInitial = Math.min(total, Math.max(initialCount, baseline));
+  const safeStep = Math.max(columns, Math.ceil(step / columns) * columns);
 
-  const [visible, setVisible] = useState(adjustedInitial);
-  useEffect(() => setVisible(adjustedInitial), [adjustedInitial]);
+  const [visible, setVisible] = useState(safeInitial);
 
-  const showMore = () => setVisible((v) => Math.min(v + adjustedStep, videos.length));
+  useEffect(() => {
+    setVisible(safeInitial);
+  }, [safeInitial]);
+
+  const visibleVideos = videos.slice(0, visible);
+  const remaining = total - visibleVideos.length;
+
+  const showMore = () =>
+    setVisible((current) => Math.min(current + safeStep, total));
 
   return (
     <>
       <div
-        ref={gridRef}
         className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
       >
-        {videos.slice(0, visible).map((v) => (
+        {visibleVideos.map((v) => (
           <VideoCard key={v.id} video={v} />
         ))}
       </div>
-      {visible < videos.length && (
+      {remaining > 0 && (
         <div className="mt-6 text-center">
           <Button
             onClick={showMore}
             className="bg-[#CEA17A] hover:bg-[#B69D74] text-[#1F2839]"
             aria-label="もっと見る"
           >
-            もっと見る（残り {videos.length - visible} 件）
+            もっと見る（残り {remaining} 件）
           </Button>
         </div>
       )}

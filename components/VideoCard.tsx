@@ -2,13 +2,19 @@ import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import { VideoItem } from "@/types/video";
 
+const dateFormatter = new Intl.DateTimeFormat("ja-JP", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
+
 type Props = {
   video: VideoItem;
 };
 
 export default function VideoCard({ video }: Props) {
   const date = new Date(video.publishedAt);
-  const formatted = isNaN(date.getTime()) ? "" : date.toLocaleDateString("ja-JP", { year: "numeric", month: "short", day: "numeric" });
+  const formatted = Number.isNaN(date.getTime()) ? "" : dateFormatter.format(date);
 
   return (
     <a href={video.url} target="_blank" rel="noopener noreferrer" aria-label={video.title}>
