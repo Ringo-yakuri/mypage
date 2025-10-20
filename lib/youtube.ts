@@ -53,7 +53,13 @@ export async function getPlaylistVideos(opts: FetchOptions = {}): Promise<VideoI
     })
     if (pageToken) params.set('pageToken', pageToken)
 
-    const res = await fetch(`${API}?${params.toString()}`, { cache: 'force-cache' })
+    let res: Response
+    try {
+      res = await fetch(`${API}?${params.toString()}`, { cache: 'no-store' })
+    } catch (error) {
+      console.error('YouTube API request failed', error)
+      break
+    }
     if (!res.ok) {
       const text = await res.text()
       throw new Error(`YouTube API error: ${res.status} ${res.statusText} ${text}`)
