@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html style="height:100%; overflow:hidden;"><head>
+<title>適時開示情報閲覧サービス - 開示情報一覧</title>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="robots" content="noindex,nofollow">
+<meta content="text/html" charset="UTF-8" http-equiv="content-type">
+<script type="text/javascript" charset="UTF-8" src="./runtime/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="./js/I_JAVASCRIPT.js"></script>
+<script type="text/javascript" charset="UTF-8" src="./js/TDJEModal.js"></script>
+<script type="text/javascript">
+<!--
+  $(document).ready(function(){
+    $("#searchB-mask").mousedown(function(){
+      $("#searchB-mask > DIV").attr("id","searchB-button_active");
+    });
+    $("#searchB-mask").mouseup(function(){
+      $("#searchB-mask > DIV").attr("id","searchB-button");
+    });
+    $("#searchB-mask").mouseleave(function(){
+      $("#searchB-mask > DIV").attr("id","searchB-button");
+    });
+
+    $("#refreshB-mask").mousedown(function(){
+      $("#refreshB-mask > DIV").attr("id","refreshB-button_active");
+    });
+    $("#refreshB-mask").mouseup(function(){
+      $("#refreshB-mask > DIV").attr("id","refreshB-button");
+    });
+    $("#refreshB-mask").mouseleave(function(){
+      $("#refreshB-mask > DIV").attr("id","refreshB-button");
+    });
+
+    $("#infoB-mask").mousedown(function(){
+      $("#infoB-mask > DIV > DIV").attr("id","infoB-button_active");
+    });
+    $("#infoB-mask").mouseup(function(){
+      $("#infoB-mask > DIV > DIV").attr("id","infoB-button");
+    });
+    $("#infoB-mask").mouseleave(function(){
+      $("#infoB-mask > DIV > DIV").attr("id","infoB-button");
+    });
+  });
+
+  $(document).ready(function(){
+    var fHeight = document.documentElement.clientHeight - 126;
+    $("#main_list").css("height",fHeight);
+  });
+
+  $(document).ready(function(){
+    $(window).resize(function(){
+      var fHeight = document.documentElement.clientHeight - 126;
+      $("#main_list").css("height",fHeight);
+    });
+  });
+
+  $(function() {
+    $( 'div[rel*=modal]').modal({
+      top: 50,
+      overlay : 0.5,
+      speed : 200
+    });
+  });
+// -->
+</script>
+<link rel="stylesheet" href="./css/I_STYLE.css" media="screen">
+</head><body onsubmit="return false;" style="margin: 0px; height: 100%; *position:relative;">
+
+<form>
+<table border="0" id="main-body-box">
+<tbody><tr>
+<td>
+<table border="0" id="logo-table">
+<tbody><tr>
+<td rowspan="2" id="logo-image"><div><img src="./gif/logo.png"></div></td>
+<td rowspan="2" align="left" valign="bottom" style="width: 26px;">　</td>
+<td align="left" id="logo-text-jp">適時開示情報閲覧サービス</td>
+</tr>
+<tr>
+<td align="left" id="logo-text-en">Company Announcements Disclosure Service</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td id="headHr"><div></div></td>
+</tr>
+<tr>
+<td>
+<table border="0" bordercolor="#faffff" align="left" id="control-menu-table">
+<tbody><tr>
+<td align="center" nowrap="" id="day-selector-caption"><div>公開日</div></td>
+<td align="left" class="opendayd" nowrap="">
+<select size="1" name="daylist" onchange="pageChange()" id="day-selector">
+<option selected="" value="">選択してください</option>
+<option value="I_list_001_20251001.html">2025/10/01(水)</option>
+<option value="I_list_001_20250930.html">2025/09/30(火)</option>
+<option value="I_list_001_20250929.html">2025/09/29(月)</option>
+<option value="I_list_001_20250928.html" style="color:#FF0000;">2025/09/28(日)</option>
+<option value="I_list_001_20250927.html" style="color:#0000FF;">2025/09/27(土)</option>
+<option value="I_list_001_20250926.html">2025/09/26(金)</option>
+<option value="I_list_001_20250925.html">2025/09/25(木)</option>
+<option value="I_list_001_20250924.html">2025/09/24(水)</option>
+<option value="I_list_001_20250923.html">2025/09/23(火)</option>
+<option value="I_list_001_20250922.html">2025/09/22(月)</option>
+<option value="I_list_001_20250921.html" style="color:#FF0000;">2025/09/21(日)</option>
+<option value="I_list_001_20250920.html" style="color:#0000FF;">2025/09/20(土)</option>
+<option value="I_list_001_20250919.html">2025/09/19(金)</option>
+<option value="I_list_001_20250918.html">2025/09/18(木)</option>
+<option value="I_list_001_20250917.html">2025/09/17(水)</option>
+<option value="I_list_001_20250916.html">2025/09/16(火)</option>
+<option value="I_list_001_20250915.html">2025/09/15(月)</option>
+<option value="I_list_001_20250914.html" style="color:#FF0000;">2025/09/14(日)</option>
+<option value="I_list_001_20250913.html" style="color:#0000FF;">2025/09/13(土)</option>
+<option value="I_list_001_20250912.html">2025/09/12(金)</option>
+<option value="I_list_001_20250911.html">2025/09/11(木)</option>
+<option value="I_list_001_20250910.html">2025/09/10(水)</option>
+<option value="I_list_001_20250909.html">2025/09/09(火)</option>
+<option value="I_list_001_20250908.html">2025/09/08(月)</option>
+<option value="I_list_001_20250907.html" style="color:#FF0000;">2025/09/07(日)</option>
+<option value="I_list_001_20250906.html" style="color:#0000FF;">2025/09/06(土)</option>
+<option value="I_list_001_20250905.html">2025/09/05(金)</option>
+<option value="I_list_001_20250904.html">2025/09/04(木)</option>
+<option value="I_list_001_20250903.html">2025/09/03(水)</option>
+<option value="I_list_001_20250902.html">2025/09/02(火)</option>
+<option value="I_list_001_20250901.html">2025/09/01(月)</option>
+
+</select>
+</td>
+<td>
+<table class="verticalRule1">
+<tbody><tr>
+<td class="vr1"></td>
+<td class="vr2"></td>
+</tr>
+</tbody></table>
+</td>
+<td align="center" nowrap="" id="tdSearchB">
+<div id="searchB-mask" onclick="openSearch();">
+<div id="searchB-button">
+<img src="./gif/icn_search.png" alt="適時開示検索へ">
+<span>適時開示情報検索へ</span>
+</div>
+</div>
+</td>
+<td>
+<table class="verticalRule2">
+<tbody><tr>
+<td class="vr1"></td>
+<td class="vr2"></td>
+</tr>
+</tbody></table>
+</td>
+<td align="center" nowrap="" id="tdInfoB">
+<div id="infoB-mask">
+<div href="#oinfo" rel="modal">
+<div id="infoB-button">
+<img src="./gif/info.png" alt="お知らせ" id="info-image">
+<span>お知らせ</span>
+</div>
+</div>
+</div>
+</td>
+<td align="center" nowrap="" id="tdNewImage">
+<img src="./news/new.gif" alt="NEW" id="new-image">
+</td>
+<td id="tdTag001">
+<table>
+<tbody><tr>
+<td></td>
+</tr>
+</tbody></table>
+</td>
+<td align="center" nowrap="" id="last-update"><div>最終更新日時：2025年10月01日 19:00</div></td>
+<td align="center" nowrap="" id="tdRefreshB">
+<div id="refreshB-mask" onclick="renewalPage()">
+<div id="refreshB-button">
+<img src="./gif/icn_load.png" alt="更新">
+<span>更　新</span>
+</div>
+</div>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td>
+<div id="list-page-box">
+<iframe id="main_list" src="I_list_001_20251001.html" frameborder="0" mraginheight="0" marginwidth="0" scrolling="auto" width="100%" seamless="" style="height: 343px;"></iframe>
+</div>
+</td>
+</tr>
+</tbody></table>
+</form>
+<iframe src="./news/I_OSHIRASE.html" id="oinfo" class="modal" frameborder="0"></iframe>
+
+
+</body></html>

@@ -8,6 +8,12 @@ export default function Updates() {
 
   const updates = [
     {
+      title: "アリエナイ理科 in 本の街 神保町 2025 薬理凶室オフライントークショー",
+      link: "https://www.shosen.co.jp/event/35648/",
+      details:
+        "2025年12月21日（日）13:00～、会場はオチャノバ（新御茶ノ水）。くられ・山崎詩郎ほか薬理凶室メンバーが登壇。チケットはLivepocketで11月21日発売予定。",
+    },
+    {
       title: "倫獄の伏魔殿6丁目",
       link: "https://ch.nicovideo.jp/kagaku-kaiketu",
       details:
