@@ -9,7 +9,7 @@ import Script from "next/script";
 export const dynamic = "force-static";
 
 export default async function Component() {
-  const videos = await getPlaylistVideos();
+  const { videos, totalViews } = await getPlaylistVideos();
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -36,7 +36,7 @@ export default async function Component() {
           <Updates />
           <Works />
           <ConnectLinks latestVideo={videos[0]} />
-          <YouTubeVideos videos={videos} initialCount={4} step={12} />
+          <YouTubeVideos videos={videos} totalViews={totalViews} initialCount={4} step={12} />
         </div>
       </main>
 

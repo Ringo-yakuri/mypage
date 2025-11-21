@@ -1,7 +1,8 @@
 import 'server-only'
 import { VideoItem } from '@/types/video'
 
-const API = 'https://www.googleapis.com/youtube/v3/playlistItems'
+const PLAYLIST_ITEMS_API = 'https://www.googleapis.com/youtube/v3/playlistItems'
+const VIDEOS_API = 'https://www.googleapis.com/youtube/v3/videos'
 
 type FetchOptions = {
   max?: number
@@ -33,7 +34,59 @@ type YTPlaylistItemsResponse = {
   nextPageToken?: string
 }
 
-export async function getPlaylistVideos(opts: FetchOptions = {}): Promise<VideoItem[]> {
+type YTVideoStats = {
+  id?: string
+  statistics?: {
+    viewCount?: string
+  }
+}
+
+type YTVideosResponse = {
+  items?: YTVideoStats[]
+}
+
+export type PlaylistFetchResult = {
+  videos: VideoItem[]
+  totalViews: number
+}
+
+async function fetchViewCounts(videoIds: string[], key: string): Promise<Map<string, number>> {
+  const viewCounts = new Map<string, number>()
+  if (videoIds.length === 0) return viewCounts
+
+  for (let i = 0; i < videoIds.length; i += 50) {
+    const batch = videoIds.slice(i, i + 50)
+    const params = new URLSearchParams({
+      key,
+      part: 'statistics',
+      id: batch.join(','),
+    })
+
+    let res: Response
+    try {
+      res = await fetch(`${VIDEOS_API}?${params.toString()}`, { cache: 'no-store' })
+    } catch (error) {
+      console.error('YouTube API (videos.list) request failed', error)
+      break
+    }
+    if (!res.ok) {
+      const text = await res.text()
+      throw new Error(`YouTube API (videos.list) error: ${res.status} ${res.statusText} ${text}`)
+    }
+
+    const data: YTVideosResponse = await res.json()
+    for (const item of data.items ?? []) {
+      const vid = item.id
+      if (!vid) continue
+      const count = Number(item.statistics?.viewCount ?? 0)
+      viewCounts.set(vid, Number.isNaN(count) ? 0 : count)
+    }
+  }
+
+  return viewCounts
+}
+
+export async function getPlaylistVideos(opts: FetchOptions = {}): Promise<PlaylistFetchResult> {
   const key = process.env.YOUTUBE_API_KEY
   const playlistId = process.env.YOUTUBE_PLAYLIST_ID
   const maxOverall = Number(process.env.MAX_VIDEOS ?? opts.max ?? 100)
@@ -55,7 +108,7 @@ export async function getPlaylistVideos(opts: FetchOptions = {}): Promise<VideoI
 
     let res: Response
     try {
-      res = await fetch(`${API}?${params.toString()}`, { cache: 'no-store' })
+      res = await fetch(`${PLAYLIST_ITEMS_API}?${params.toString()}`, { cache: 'no-store' })
     } catch (error) {
       console.error('YouTube API request failed', error)
       break
@@ -106,5 +159,14 @@ export async function getPlaylistVideos(opts: FetchOptions = {}): Promise<VideoI
   for (const v of results) {
     if (!pinnedIds.has(v.id)) merged.push(v)
   }
-  return merged
+
+  const uniqueIds = Array.from(new Set(merged.map((v) => v.id)))
+  const viewCounts = await fetchViewCounts(uniqueIds, key)
+  const totalViews = Array.from(viewCounts.values()).reduce((sum, count) => sum + count, 0)
+  const withViews = merged.map((video) => ({
+    ...video,
+    viewCount: viewCounts.get(video.id),
+  }))
+
+  return { videos: withViews, totalViews }
 }

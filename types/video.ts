@@ -4,5 +4,5 @@ export type VideoItem = {
   publishedAt: string; // ISO date string
   thumbnailUrl: string;
   url: string;
+  viewCount?: number;
 };
-
