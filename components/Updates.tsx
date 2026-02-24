@@ -18,7 +18,7 @@ const updates: UpdateItem[] = [
   },
   {
     title: "三才ブックス「ラジオライフ」連載：ｱﾘｴﾅｲ法学凶室",
-    link: "https://radiolife.jp/",
+    link: "https://www.sansaibooks.co.jp/tag/0001/",
     details: "月刊「ラジオライフ」にてｱﾘｴﾅｲ法学凶室を連載中です。最新号もぜひチェックしてください。",
   },
   {
