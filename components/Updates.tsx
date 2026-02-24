@@ -11,10 +11,15 @@ type UpdateItem = {
 
 const updates: UpdateItem[] = [
   {
-    title: "アリエナイ理科 in 本の街 神保町 2025 薬理凶室オフライントークショー",
-    link: "https://www.shosen.co.jp/event/35648/",
+    title: "2026年3月21日（土）アリエナイ 昼と夜 の実験室 in 阿佐ヶ谷ロフト",
+    link: "https://www.loft-prj.co.jp/schedule/lofta/",
     details:
-      "2025年12月21日（日）13:00～、会場はオチャノバ（新御茶ノ水）。くられ・山崎詩郎ほか薬理凶室メンバーが登壇。チケットはLivepocketで11月21日発売予定。",
+      "阿佐ヶ谷ロフトAで開催される昼夜二部制のイベントに出演します。詳細・チケット情報はロフト公式サイトをご確認ください。",
+  },
+  {
+    title: "三才ブックス「ラジオライフ」連載：ｱﾘｴﾅｲ法学凶室",
+    link: "https://radiolife.jp/",
+    details: "月刊「ラジオライフ」にてｱﾘｴﾅｲ法学凶室を連載中です。最新号もぜひチェックしてください。",
   },
   {
     title: "倫獄の伏魔殿6丁目",
