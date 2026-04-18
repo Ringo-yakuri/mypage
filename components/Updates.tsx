@@ -11,12 +11,6 @@ type UpdateItem = {
 
 const updates: UpdateItem[] = [
   {
-    title: "2026年3月21日（土）アリエナイ 昼と夜 の実験室 in 阿佐ヶ谷ロフト",
-    link: "https://www.loft-prj.co.jp/schedule/lofta/",
-    details:
-      "阿佐ヶ谷ロフトAで開催される昼夜二部制のイベントに出演します。詳細・チケット情報はロフト公式サイトをご確認ください。",
-  },
-  {
     title: "三才ブックス「ラジオライフ」連載：ｱﾘｴﾅｲ法学凶室",
     link: "https://www.sansaibooks.co.jp/tag/0001/",
     details: "月刊「ラジオライフ」にてｱﾘｴﾅｲ法学凶室を連載中です。最新号もぜひチェックしてください。",
