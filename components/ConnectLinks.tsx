@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { SiYoutube, SiNiconico, SiX, SiBluesky, SiTwitch } from "@icons-pack/react-simple-icons";
-import { Footprints } from "lucide-react";
+import { BookOpen, Footprints } from "lucide-react";
 import { VideoItem } from "@/types/video";
 
 type Props = { latestVideo?: VideoItem };
@@ -70,6 +70,12 @@ export default function ConnectLinks({ latestVideo }: Props) {
           <Button className="w-full bg-[#C7CCCF] hover:bg-[#BFC1C6] text-[#2C3A45]">
             <Footprints className="mr-2 h-4 w-4" />
             mixi2
+          </Button>
+        </a>
+        <a href="https://glossary.ringosensei.com/" target="_blank" rel="noopener noreferrer">
+          <Button className="w-full bg-[#C7CCCF] hover:bg-[#BFC1C6] text-[#2C3A45]">
+            <BookOpen className="mr-2 h-4 w-4" />
+            用語集
           </Button>
         </a>
       </div>

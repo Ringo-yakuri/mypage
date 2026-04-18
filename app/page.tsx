@@ -4,12 +4,19 @@ import Works from "@/components/Works";
 import ConnectLinks from "@/components/ConnectLinks";
 import YouTubeVideos from "@/components/YouTubeVideos";
 import { getPlaylistVideos } from "@/lib/youtube";
+import { VideoItem } from "@/types/video";
 import Script from "next/script";
 
 export const dynamic = "force-static";
 
 export default async function Component() {
-  const { videos, totalViews } = await getPlaylistVideos();
+  let videos: VideoItem[] = [];
+  let totalViews = 0;
+  try {
+    ({ videos, totalViews } = await getPlaylistVideos());
+  } catch (error) {
+    console.error("Failed to load YouTube videos during build", error);
+  }
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
