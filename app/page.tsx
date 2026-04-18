@@ -3,20 +3,15 @@ import Updates from "@/components/Updates";
 import Works from "@/components/Works";
 import ConnectLinks from "@/components/ConnectLinks";
 import YouTubeVideos from "@/components/YouTubeVideos";
-import { getPlaylistVideos } from "@/lib/youtube";
-import { VideoItem } from "@/types/video";
+import { readYoutubeCache } from "@/lib/youtube-cache";
 import Script from "next/script";
 
 export const dynamic = "force-static";
+const INITIAL_VIDEO_COUNT = 4;
 
 export default async function Component() {
-  let videos: VideoItem[] = [];
-  let totalViews = 0;
-  try {
-    ({ videos, totalViews } = await getPlaylistVideos());
-  } catch (error) {
-    console.error("Failed to load YouTube videos during build", error);
-  }
+  const { videos, totalViews } = await readYoutubeCache();
+  const initialVideos = videos.slice(0, INITIAL_VIDEO_COUNT);
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -43,7 +38,14 @@ export default async function Component() {
           <Updates />
           <Works />
           <ConnectLinks latestVideo={videos[0]} />
-          <YouTubeVideos videos={videos} totalViews={totalViews} initialCount={4} step={12} />
+          <YouTubeVideos
+            initialVideos={initialVideos}
+            totalCount={videos.length}
+            totalViews={totalViews}
+            dataUrl="/data/youtube-videos.json"
+            initialCount={INITIAL_VIDEO_COUNT}
+            step={12}
+          />
         </div>
       </main>
 

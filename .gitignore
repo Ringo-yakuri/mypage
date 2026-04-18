@@ -30,8 +30,12 @@ yarn-error.log*
 
 # vercel
 .vercel
+.netlify
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 mypage/
+
+# generated cache
+public/data/

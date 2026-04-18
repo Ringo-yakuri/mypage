@@ -4,8 +4,10 @@ import VideosClient from "@/components/VideosClient";
 import { VideoItem } from "@/types/video";
 
 type Props = {
-  videos: VideoItem[];
+  initialVideos: VideoItem[];
+  totalCount: number;
   totalViews?: number;
+  dataUrl: string;
   initialCount?: number;
   step?: number;
 };
@@ -17,7 +19,14 @@ const playlistUrl = playlistId
   : 'https://www.youtube.com'
 const viewFormatter = new Intl.NumberFormat('ja-JP')
 
-export default function YouTubeVideos({ videos, totalViews, initialCount = 24, step = 8 }: Props) {
+export default function YouTubeVideos({
+  initialVideos,
+  totalCount,
+  totalViews,
+  dataUrl,
+  initialCount = 24,
+  step = 8,
+}: Props) {
   const hasTotal = typeof totalViews === 'number' && Number.isFinite(totalViews)
   const formattedTotal = hasTotal ? viewFormatter.format(totalViews ?? 0) : null
   return (
@@ -41,7 +50,13 @@ export default function YouTubeVideos({ videos, totalViews, initialCount = 24, s
           </a>
         </Button>
       </div>
-      <VideosClient videos={videos} initialCount={initialCount} step={step} />
+      <VideosClient
+        initialVideos={initialVideos}
+        totalCount={totalCount}
+        dataUrl={dataUrl}
+        initialCount={initialCount}
+        step={step}
+      />
     </Card>
   );
 }

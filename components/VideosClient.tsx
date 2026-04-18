@@ -1,13 +1,19 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import VideoCard from "@/components/VideoCard";
 import { VideoItem } from "@/types/video";
 import { Button } from "@/components/ui/button";
 
 type Props = {
-  videos: VideoItem[];
+  initialVideos: VideoItem[];
+  totalCount: number;
+  dataUrl: string;
   initialCount?: number;
   step?: number;
+};
+
+type VideoPayload = {
+  videos?: VideoItem[];
 };
 
 const breakpointColumns = [
@@ -52,11 +58,19 @@ function useColumns() {
   return columns;
 }
 
-export default function VideosClient({ videos, initialCount = 4, step = 4 }: Props) {
-  const total = videos.length;
+export default function VideosClient({
+  initialVideos,
+  totalCount,
+  dataUrl,
+  initialCount = 4,
+  step = 4,
+}: Props) {
+  const [videos, setVideos] = useState(initialVideos);
+  const [isLoadingAll, setIsLoadingAll] = useState(false);
+  const loadAllRef = useRef<Promise<VideoItem[]> | null>(null);
   const columns = useColumns();
   const baseline = columns <= 2 ? 4 : columns * 2;
-  const safeInitial = Math.min(total, Math.max(initialCount, baseline));
+  const safeInitial = Math.min(totalCount, Math.max(initialCount, baseline));
   const safeStep = Math.max(columns, Math.ceil(step / columns) * columns);
 
   const [visible, setVisible] = useState(safeInitial);
@@ -65,11 +79,56 @@ export default function VideosClient({ videos, initialCount = 4, step = 4 }: Pro
     setVisible(safeInitial);
   }, [safeInitial]);
 
-  const visibleVideos = videos.slice(0, visible);
-  const remaining = total - visibleVideos.length;
+  useEffect(() => {
+    setVideos(initialVideos);
+  }, [initialVideos]);
 
-  const showMore = () =>
-    setVisible((current) => Math.min(current + safeStep, total));
+  useEffect(() => {
+    loadAllRef.current = null;
+  }, [dataUrl, totalCount, initialVideos]);
+
+  const loadAllVideos = useCallback(async () => {
+    if (loadAllRef.current) return loadAllRef.current;
+
+    const request = (async () => {
+      setIsLoadingAll(true);
+      try {
+        const response = await fetch(dataUrl, { cache: "force-cache" });
+        if (!response.ok) {
+          throw new Error(`Failed to load videos: ${response.status} ${response.statusText}`);
+        }
+
+        const payload = (await response.json()) as VideoPayload;
+        const nextVideos = Array.isArray(payload.videos) ? payload.videos : initialVideos;
+        setVideos(nextVideos);
+        return nextVideos;
+      } catch (error) {
+        console.error("Failed to load full video list", error);
+        return initialVideos;
+      } finally {
+        setIsLoadingAll(false);
+      }
+    })();
+
+    loadAllRef.current = request;
+    return request;
+  }, [dataUrl, initialVideos]);
+
+  useEffect(() => {
+    if (totalCount > initialVideos.length) {
+      void loadAllVideos();
+    }
+  }, [initialVideos.length, loadAllVideos, totalCount]);
+
+  const visibleVideos = videos.slice(0, visible);
+  const remaining = Math.max(0, totalCount - visibleVideos.length);
+
+  const showMore = async () => {
+    if (videos.length < totalCount) {
+      await loadAllVideos();
+    }
+    setVisible((current) => Math.min(current + safeStep, totalCount));
+  };
 
   return (
     <>
@@ -86,8 +145,11 @@ export default function VideosClient({ videos, initialCount = 4, step = 4 }: Pro
             onClick={showMore}
             className="bg-[#CEA17A] hover:bg-[#B69D74] text-[#1F2839]"
             aria-label="もっと見る"
+            disabled={isLoadingAll && videos.length < totalCount}
           >
-            もっと見る（残り {remaining} 件）
+            {isLoadingAll && videos.length < totalCount
+              ? "動画を読み込み中..."
+              : `もっと見る（残り ${remaining} 件）`}
           </Button>
         </div>
       )}
