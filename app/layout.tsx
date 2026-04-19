@@ -2,7 +2,24 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const siteUrl = process.env.SITE_URL || "http://localhost:3000";
+function resolveSiteUrl() {
+  const fallback =
+    process.env.NODE_ENV === "production"
+      ? "https://ringosensei.com"
+      : "http://localhost:3000";
+  const raw = (process.env.SITE_URL || "").trim();
+  if (!raw) return fallback;
+
+  try {
+    const parsed = new URL(raw);
+    if (!/^https?:$/.test(parsed.protocol)) return fallback;
+    return parsed.toString().replace(/\/$/, "");
+  } catch {
+    return fallback;
+  }
+}
+
+const siteUrl = resolveSiteUrl();
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
