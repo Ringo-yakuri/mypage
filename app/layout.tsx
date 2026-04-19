@@ -13,6 +13,8 @@ function resolveSiteUrl() {
   try {
     const parsed = new URL(raw);
     if (!/^https?:$/.test(parsed.protocol)) return fallback;
+    if (["http:", "https:"].includes(`${parsed.hostname}:`)) return fallback;
+    if (parsed.pathname.startsWith("//")) return fallback;
     return parsed.toString().replace(/\/$/, "");
   } catch {
     return fallback;
