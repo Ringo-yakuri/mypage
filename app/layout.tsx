@@ -19,6 +19,15 @@ export const metadata: Metadata = {
   title: "倫獄のポートフォリオ",
   description: "薬理凶室に所属する法律怪人倫獄のこれまでのお仕事とお仕事のお知らせ",
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: [
+      { url: "/images/sigil-faithful.svg", type: "image/svg+xml" },
+      { url: "/images/sigil-faithful.png", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    shortcut: ["/favicon.ico"],
+    apple: [{ url: "/images/sigil-faithful.png" }],
+  },
   openGraph: {
     type: 'website',
     title: '倫獄のポートフォリオ',
