@@ -45,7 +45,7 @@ export const metadata: Metadata = {
       { url: "/favicon.ico" },
     ],
     shortcut: ["/favicon.ico"],
-    apple: [{ url: "/images/sigil-faithful.png" }],
+    apple: [{ url: "/images/apple-touch-icon.png" }],
   },
   openGraph: {
     type: 'website',
