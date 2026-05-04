@@ -14,6 +14,7 @@ type Props = {
 
 type VideoPayload = {
   videos?: VideoItem[];
+  updatedAt?: string | null;
 };
 
 const breakpointColumns = [
@@ -66,11 +67,13 @@ export default function VideosClient({
   step = 4,
 }: Props) {
   const [videos, setVideos] = useState(initialVideos);
+  const [resolvedTotalCount, setResolvedTotalCount] = useState(Math.max(totalCount, initialVideos.length));
   const [isLoadingAll, setIsLoadingAll] = useState(false);
   const loadAllRef = useRef<Promise<VideoItem[]> | null>(null);
+  const latestLoadedAtRef = useRef<string | null>(null);
   const columns = useColumns();
   const baseline = columns <= 2 ? 4 : columns * 2;
-  const safeInitial = Math.min(totalCount, Math.max(initialCount, baseline));
+  const safeInitial = Math.min(resolvedTotalCount, Math.max(initialCount, baseline));
   const safeStep = Math.max(columns, Math.ceil(step / columns) * columns);
 
   const [visible, setVisible] = useState(safeInitial);
@@ -81,10 +84,12 @@ export default function VideosClient({
 
   useEffect(() => {
     setVideos(initialVideos);
-  }, [initialVideos]);
+    setResolvedTotalCount(Math.max(totalCount, initialVideos.length));
+  }, [initialVideos, totalCount]);
 
   useEffect(() => {
     loadAllRef.current = null;
+    latestLoadedAtRef.current = null;
   }, [dataUrl, totalCount, initialVideos]);
 
   const loadAllVideos = useCallback(async () => {
@@ -93,14 +98,23 @@ export default function VideosClient({
     const request = (async () => {
       setIsLoadingAll(true);
       try {
-        const response = await fetch(dataUrl, { cache: "force-cache" });
+        const response = await fetch(dataUrl, { cache: "no-store" });
         if (!response.ok) {
           throw new Error(`Failed to load videos: ${response.status} ${response.statusText}`);
         }
 
         const payload = (await response.json()) as VideoPayload;
         const nextVideos = Array.isArray(payload.videos) ? payload.videos : initialVideos;
+        const nextUpdatedAt = typeof payload.updatedAt === "string" ? payload.updatedAt : null;
+
+        // Avoid redundant re-renders when the JSON matches the last loaded snapshot.
+        if (nextUpdatedAt && latestLoadedAtRef.current === nextUpdatedAt) {
+          return nextVideos;
+        }
+
+        latestLoadedAtRef.current = nextUpdatedAt;
         setVideos(nextVideos);
+        setResolvedTotalCount(nextVideos.length);
         return nextVideos;
       } catch (error) {
         console.error("Failed to load full video list", error);
@@ -115,19 +129,17 @@ export default function VideosClient({
   }, [dataUrl, initialVideos]);
 
   useEffect(() => {
-    if (totalCount > initialVideos.length) {
-      void loadAllVideos();
-    }
-  }, [initialVideos.length, loadAllVideos, totalCount]);
+    void loadAllVideos();
+  }, [loadAllVideos]);
 
   const visibleVideos = videos.slice(0, visible);
-  const remaining = Math.max(0, totalCount - visibleVideos.length);
+  const remaining = Math.max(0, resolvedTotalCount - visibleVideos.length);
 
   const showMore = async () => {
-    if (videos.length < totalCount) {
+    if (videos.length < resolvedTotalCount) {
       await loadAllVideos();
     }
-    setVisible((current) => Math.min(current + safeStep, totalCount));
+    setVisible((current) => Math.min(current + safeStep, resolvedTotalCount));
   };
 
   return (
