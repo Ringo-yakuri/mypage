@@ -146,10 +146,7 @@ async function fetchPlaylistCache() {
     return Number.isNaN(timestamp) ? -Infinity : timestamp;
   };
 
-  const latestFirst = [...results].sort((a, b) => toTime(b.publishedAt) - toTime(a.publishedAt));
-  const pinned = latestFirst.slice(0, 2);
-  const pinnedIds = new Set(pinned.map((video) => video.id));
-  const ordered = [...pinned, ...results.filter((video) => !pinnedIds.has(video.id))];
+  const ordered = [...results].sort((a, b) => toTime(b.publishedAt) - toTime(a.publishedAt));
 
   const viewCounts = await fetchViewCounts(
     Array.from(new Set(ordered.map((video) => video.id))),
