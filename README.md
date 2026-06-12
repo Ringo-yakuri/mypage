@@ -57,7 +57,7 @@ npm test                 # scripts/ の純粋関数のユニットテスト (nod
 npm run build            # 静的ビルド → out/ (git を汚さない)
 ```
 
-Node 20 を使用(`.nvmrc` / `engines.node`)。
+Node 24(LTS)を使用(`.nvmrc` / `engines.node`)。
 
 ## デプロイと定期更新
 
@@ -99,4 +99,4 @@ Node 20 を使用(`.nvmrc` / `engines.node`)。
 ## ビルドイメージと Node バージョン
 
 - Netlify ビルドイメージ: Ubuntu 24.04 Noble(`netlify.toml` の `image = "noble"`)
-- Node: 20.x(`package.json` の `engines.node`。ローカルは `nvm use 20` など)
+- Node: 24.x(`package.json` の `engines.node`。ローカルは `nvm use 24` など)
