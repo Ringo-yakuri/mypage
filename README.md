@@ -8,9 +8,8 @@ Next.js 14 (App Router) の完全静的サイト。YouTube 再生リストの出
 GitHub Actions (毎日 04:17 JST)
   └─ refresh-youtube.yml
        ├─ YouTube Data API v3 から再生リストを取得 (--strict: 失敗したら workflow が落ちる)
-       ├─ data/youtube-videos.json に差分があれば commit & push
-       └─ 変更があった場合のみ Netlify Build Hook を POST
-            └─ Netlify: npm run build → out/ を配信
+       └─ data/youtube-videos.json に差分があれば commit & push
+            └─ Netlify が push を auto-deploy: npm run build → out/ を配信
 ```
 
 - **データの単一情報源は `data/youtube-videos.json`(git 管理)。** ビルドは API を叩かず、コミット済みのこのファイルを読むだけ。`npm run build` を何度実行しても git は汚れない。
@@ -69,13 +68,12 @@ Node 20 を使用(`.nvmrc` / `engines.node`)。
 
 ### 必要なリポジトリ設定(GitHub)
 
-- Secrets: `YOUTUBE_API_KEY`, `YOUTUBE_PLAYLIST_ID`, `NETLIFY_BUILD_HOOK_URL`
+- Secrets: `YOUTUBE_API_KEY`, `YOUTUBE_PLAYLIST_ID`
 - Variables(任意): `MAX_VIDEOS`
 
 ### Netlify 側の注意
 
-- リポジトリ連携の auto-deploy が有効な場合、refresh workflow の push と Build Hook で同日に2回ビルドされることがある。気になる場合はどちらか一方を止める。
-- ビルドが API を叩かなくなったため、Netlify の環境変数 `YOUTUBE_API_KEY` / `YOUTUBE_PLAYLIST_ID` と `netlify.toml` の `SECRETS_SCAN_OMIT_KEYS` は削除してよい(環境変数を消した後に `SECRETS_SCAN_OMIT_KEYS` を消すこと)。
+- デプロイはリポジトリ連携の auto-deploy のみ(main への push で自動ビルド)。Build Hook は使っていないので、Netlify 側の auto-deploy を止めるとデータ更新がサイトに反映されなくなる。
 
 ## キャッシュ JSON のスキーマ (v1)
 

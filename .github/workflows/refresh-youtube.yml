@@ -31,29 +31,16 @@ jobs:
           MAX_VIDEOS: ${{ vars.MAX_VIDEOS }}
         run: npm run refresh:youtube:ci
 
+      # デプロイは Netlify のリポジトリ連携 auto-deploy に任せる(push されれば
+      # 自動でビルドされる。2026-06-12 に本番で動作確認済み)。
       - name: Commit updated cache
-        id: commit
         run: |
           if git diff --quiet -- data/youtube-videos.json; then
             echo "No cache changes to commit."
-            echo "pushed=false" >> "$GITHUB_OUTPUT"
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add data/youtube-videos.json
             git commit -m "chore: refresh YouTube cache"
             git push
-            echo "pushed=true" >> "$GITHUB_OUTPUT"
           fi
-
-      # Netlify がリポジトリ連携の auto-deploy を持つ場合、push だけでビルドされる。
-      # 連携が無い構成でも確実にデプロイされるよう Build Hook も叩く(二重ビルドに
-      # なる場合は Netlify 側で auto-deploy か本フックのどちらかを止めてよい)。
-      - name: Trigger Netlify build
-        if: steps.commit.outputs.pushed == 'true'
-        env:
-          URL: ${{ secrets.NETLIFY_BUILD_HOOK_URL }}
-        run: |
-          curl --fail-with-body -sS -X POST \
-            -H "Content-Type: application/json" \
-            -d '{}' "$URL?trigger_title=scheduled%20youtube%20refresh"
