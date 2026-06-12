@@ -1,7 +1,7 @@
 // YouTube Data API v3 から再生リストの動画情報を取得し、data/youtube-videos.json を更新する。
 // ローカル: npm run refresh:youtube (.env.local を --env-file で読み込む)
 // CI:       npm run refresh:youtube:ci (--strict: 失敗時に exit 1)
-import { mkdir, readFile, writeFile } from "fs/promises";
+import { mkdir, writeFile } from "fs/promises";
 import path from "path";
 import { buildCache, dedupeById, resolveMaxVideos, toVideoItem } from "./youtube-cache-lib.mjs";
 
@@ -12,21 +12,12 @@ const strict = process.argv.includes("--strict");
 
 const rootDir = process.cwd();
 const cacheDir = path.join(rootDir, "data");
-const publicCacheDir = path.join(rootDir, "public", "data");
 const cachePath = path.join(cacheDir, "youtube-videos.json");
-const publicCachePath = path.join(publicCacheDir, "youtube-videos.json");
-
-async function readExistingCache() {
-  const raw = await readFile(cachePath, "utf8");
-  return JSON.parse(raw);
-}
 
 async function writeCache(cache) {
   const serialized = `${JSON.stringify(cache, null, 2)}\n`;
   await mkdir(cacheDir, { recursive: true });
-  await mkdir(publicCacheDir, { recursive: true });
   await writeFile(cachePath, serialized, "utf8");
-  await writeFile(publicCachePath, serialized, "utf8");
 }
 
 async function fetchJson(endpoint, params) {
@@ -124,7 +115,6 @@ try {
     console.error(error);
     process.exit(1);
   }
-  console.warn("Failed to refresh YouTube cache, using existing snapshot instead.");
+  console.warn("Failed to refresh YouTube cache, keeping the existing snapshot.");
   console.warn(error);
-  await writeCache(await readExistingCache());
 }

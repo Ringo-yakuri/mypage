@@ -4,14 +4,12 @@ import Works from "@/components/Works";
 import ConnectLinks from "@/components/ConnectLinks";
 import YouTubeVideos from "@/components/YouTubeVideos";
 import { readYoutubeCache } from "@/lib/youtube-cache";
-import Script from "next/script";
 
 export const dynamic = "force-static";
 const INITIAL_VIDEO_COUNT = 4;
 
 export default async function Component() {
-  const { videos, totalViews } = await readYoutubeCache();
-  const initialVideos = videos.slice(0, INITIAL_VIDEO_COUNT);
+  const { videos, totalViews, playlistUrl } = await readYoutubeCache();
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -39,10 +37,9 @@ export default async function Component() {
           <Works />
           <ConnectLinks latestVideo={videos[0]} />
           <YouTubeVideos
-            initialVideos={initialVideos}
-            totalCount={videos.length}
+            videos={videos}
             totalViews={totalViews}
-            dataUrl="/data/youtube-videos.json"
+            playlistUrl={playlistUrl}
             initialCount={INITIAL_VIDEO_COUNT}
             step={12}
           />
@@ -65,7 +62,11 @@ export default async function Component() {
           </p>
         </div>
       </footer>
-      <Script id="videos-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {/* 動画タイトルは外部入力のため、script コンテキストを壊さないよう < をエスケープする */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+      />
     </div>
   );
 }

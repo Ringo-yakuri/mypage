@@ -1,20 +1,13 @@
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import VideoCard from "@/components/VideoCard";
 import { VideoItem } from "@/types/video";
 import { Button } from "@/components/ui/button";
 
 type Props = {
-  initialVideos: VideoItem[];
-  totalCount: number;
-  dataUrl: string;
+  videos: VideoItem[];
   initialCount?: number;
   step?: number;
-};
-
-type VideoPayload = {
-  videos?: VideoItem[];
-  updatedAt?: string | null;
 };
 
 const breakpointColumns = [
@@ -59,21 +52,11 @@ function useColumns() {
   return columns;
 }
 
-export default function VideosClient({
-  initialVideos,
-  totalCount,
-  dataUrl,
-  initialCount = 4,
-  step = 4,
-}: Props) {
-  const [videos, setVideos] = useState(initialVideos);
-  const [resolvedTotalCount, setResolvedTotalCount] = useState(Math.max(totalCount, initialVideos.length));
-  const [isLoadingAll, setIsLoadingAll] = useState(false);
-  const loadAllRef = useRef<Promise<VideoItem[]> | null>(null);
-  const latestLoadedAtRef = useRef<string | null>(null);
+export default function VideosClient({ videos, initialCount = 4, step = 4 }: Props) {
   const columns = useColumns();
+  // 最終行が欠けないよう、初期表示数と増分は列数の倍数に揃える。
   const baseline = columns <= 2 ? 4 : columns * 2;
-  const safeInitial = Math.min(resolvedTotalCount, Math.max(initialCount, baseline));
+  const safeInitial = Math.min(videos.length, Math.max(initialCount, baseline));
   const safeStep = Math.max(columns, Math.ceil(step / columns) * columns);
 
   const [visible, setVisible] = useState(safeInitial);
@@ -82,71 +65,12 @@ export default function VideosClient({
     setVisible(safeInitial);
   }, [safeInitial]);
 
-  useEffect(() => {
-    setVideos(initialVideos);
-    setResolvedTotalCount(Math.max(totalCount, initialVideos.length));
-  }, [initialVideos, totalCount]);
-
-  useEffect(() => {
-    loadAllRef.current = null;
-    latestLoadedAtRef.current = null;
-  }, [dataUrl, totalCount, initialVideos]);
-
-  const loadAllVideos = useCallback(async () => {
-    if (loadAllRef.current) return loadAllRef.current;
-
-    const request = (async () => {
-      setIsLoadingAll(true);
-      try {
-        const response = await fetch(dataUrl, { cache: "no-store" });
-        if (!response.ok) {
-          throw new Error(`Failed to load videos: ${response.status} ${response.statusText}`);
-        }
-
-        const payload = (await response.json()) as VideoPayload;
-        const nextVideos = Array.isArray(payload.videos) ? payload.videos : initialVideos;
-        const nextUpdatedAt = typeof payload.updatedAt === "string" ? payload.updatedAt : null;
-
-        // Avoid redundant re-renders when the JSON matches the last loaded snapshot.
-        if (nextUpdatedAt && latestLoadedAtRef.current === nextUpdatedAt) {
-          return nextVideos;
-        }
-
-        latestLoadedAtRef.current = nextUpdatedAt;
-        setVideos(nextVideos);
-        setResolvedTotalCount(nextVideos.length);
-        return nextVideos;
-      } catch (error) {
-        console.error("Failed to load full video list", error);
-        return initialVideos;
-      } finally {
-        setIsLoadingAll(false);
-      }
-    })();
-
-    loadAllRef.current = request;
-    return request;
-  }, [dataUrl, initialVideos]);
-
-  useEffect(() => {
-    void loadAllVideos();
-  }, [loadAllVideos]);
-
   const visibleVideos = videos.slice(0, visible);
-  const remaining = Math.max(0, resolvedTotalCount - visibleVideos.length);
-
-  const showMore = async () => {
-    if (videos.length < resolvedTotalCount) {
-      await loadAllVideos();
-    }
-    setVisible((current) => Math.min(current + safeStep, resolvedTotalCount));
-  };
+  const remaining = videos.length - visibleVideos.length;
 
   return (
     <>
-      <div
-        className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-      >
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {visibleVideos.map((v) => (
           <VideoCard key={v.id} video={v} />
         ))}
@@ -154,14 +78,11 @@ export default function VideosClient({
       {remaining > 0 && (
         <div className="mt-6 text-center">
           <Button
-            onClick={showMore}
+            onClick={() => setVisible((current) => Math.min(current + safeStep, videos.length))}
             className="bg-[#CEA17A] hover:bg-[#B69D74] text-[#1F2839]"
             aria-label="もっと見る"
-            disabled={isLoadingAll && videos.length < totalCount}
           >
-            {isLoadingAll && videos.length < totalCount
-              ? "動画を読み込み中..."
-              : `もっと見る（残り ${remaining} 件）`}
+            もっと見る（残り {remaining} 件）
           </Button>
         </div>
       )}

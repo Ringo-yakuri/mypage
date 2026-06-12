@@ -4,31 +4,25 @@ import VideosClient from "@/components/VideosClient";
 import { VideoItem } from "@/types/video";
 
 type Props = {
-  initialVideos: VideoItem[];
-  totalCount: number;
+  videos: VideoItem[];
   totalViews?: number;
-  dataUrl: string;
+  playlistUrl: string | null;
   initialCount?: number;
   step?: number;
 };
 
-// Server component; receives videos fetched at build time
-const playlistId = process.env.YOUTUBE_PLAYLIST_ID
-const playlistUrl = playlistId
-  ? `https://www.youtube.com/playlist?list=${encodeURIComponent(playlistId)}`
-  : 'https://www.youtube.com'
-const viewFormatter = new Intl.NumberFormat('ja-JP')
+const viewFormatter = new Intl.NumberFormat("ja-JP");
 
+// Server component; videos はビルド時にキャッシュ JSON から渡される
 export default function YouTubeVideos({
-  initialVideos,
-  totalCount,
+  videos,
   totalViews,
-  dataUrl,
+  playlistUrl,
   initialCount = 24,
   step = 8,
 }: Props) {
-  const hasTotal = typeof totalViews === 'number' && Number.isFinite(totalViews)
-  const formattedTotal = hasTotal ? viewFormatter.format(totalViews ?? 0) : null
+  const hasTotal = typeof totalViews === "number" && Number.isFinite(totalViews) && totalViews > 0;
+  const formattedTotal = hasTotal ? viewFormatter.format(totalViews ?? 0) : null;
   return (
     <Card className="md:col-span-3 p-6 shadow-lg bg-gradient-to-br from-[#09171F] to-[#2C3A45]">
       <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
@@ -45,18 +39,12 @@ export default function YouTubeVideos({
           size="sm"
           className="bg-[#CEA17A] hover:bg-[#B69D74] text-[#1F2839]"
         >
-          <a href={playlistUrl} target="_blank" rel="noopener noreferrer">
+          <a href={playlistUrl ?? "https://www.youtube.com"} target="_blank" rel="noopener noreferrer">
             プレイリスト
           </a>
         </Button>
       </div>
-      <VideosClient
-        initialVideos={initialVideos}
-        totalCount={totalCount}
-        dataUrl={dataUrl}
-        initialCount={initialCount}
-        step={step}
-      />
+      <VideosClient videos={videos} initialCount={initialCount} step={step} />
     </Card>
   );
 }

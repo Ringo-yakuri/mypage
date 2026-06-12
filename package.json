@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/copy-cache-to-public.mjs",
     "build": "next build",
     "refresh:youtube": "node --env-file=.env.local scripts/sync-youtube-cache.mjs",
     "refresh:youtube:ci": "node scripts/sync-youtube-cache.mjs --strict",
