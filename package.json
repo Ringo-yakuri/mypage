@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "node scripts/sync-youtube-cache.mjs && next build",
+    "refresh:youtube": "node --env-file=.env.local scripts/sync-youtube-cache.mjs",
+    "refresh:youtube:ci": "node scripts/sync-youtube-cache.mjs --strict",
     "start": "next start",
     "lint": "next lint"
   },
