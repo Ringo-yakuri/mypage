@@ -8,7 +8,8 @@
     "refresh:youtube": "node --env-file=.env.local scripts/sync-youtube-cache.mjs",
     "refresh:youtube:ci": "node scripts/sync-youtube-cache.mjs --strict",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "node --test scripts/youtube-cache-lib.test.mjs"
   },
   "engines": {
     "node": "20.x"
