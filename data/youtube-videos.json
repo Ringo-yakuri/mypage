@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-06-17T21:20:45.314Z",
+  "updatedAt": "2026-06-18T21:28:24.026Z",
   "playlistUrl": "https://www.youtube.com/playlist?list=PLQv1KiNtBAtmrCL6qdE4LjjwrGPIeuteF",
-  "totalViews": 19436092,
+  "totalViews": 19443244,
   "videos": [
     {
       "id": "PJid6xETpbI",
@@ -10,7 +10,7 @@
       "publishedAt": "2026-05-15T10:00:40Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/PJid6xETpbI/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=PJid6xETpbI",
-      "viewCount": 30604
+      "viewCount": 30626
     },
     {
       "id": "j8KGWiNi0vs",
@@ -18,7 +18,7 @@
       "publishedAt": "2026-04-29T10:00:07Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/j8KGWiNi0vs/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=j8KGWiNi0vs",
-      "viewCount": 87290
+      "viewCount": 87368
     },
     {
       "id": "BuHgv4I1Ju4",
@@ -26,7 +26,7 @@
       "publishedAt": "2025-08-24T10:00:06Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/BuHgv4I1Ju4/hqdefault.jpg",
       "url": "https://www.youtube.com/watch?v=BuHgv4I1Ju4",
-      "viewCount": 346307
+      "viewCount": 346504
     },
     {
       "id": "ihgboBhqd0I",
@@ -34,7 +34,7 @@
       "publishedAt": "2024-04-11T09:00:26Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/ihgboBhqd0I/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=ihgboBhqd0I",
-      "viewCount": 1227355
+      "viewCount": 1227903
     },
     {
       "id": "yOcTIb3Qqyk",
@@ -42,7 +42,7 @@
       "publishedAt": "2025-01-04T10:00:06Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/yOcTIb3Qqyk/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=yOcTIb3Qqyk",
-      "viewCount": 282638
+      "viewCount": 282835
     },
     {
       "id": "y88fFsuIQEM",
@@ -50,7 +50,7 @@
       "publishedAt": "2025-06-14T10:00:06Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/y88fFsuIQEM/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=y88fFsuIQEM",
-      "viewCount": 208708
+      "viewCount": 208923
     },
     {
       "id": "XjpKA3CG1eA",
@@ -58,7 +58,7 @@
       "publishedAt": "2025-05-25T10:30:06Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/XjpKA3CG1eA/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=XjpKA3CG1eA",
-      "viewCount": 243477
+      "viewCount": 243639
     },
     {
       "id": "TbW-CiiE4qc",
@@ -66,7 +66,7 @@
       "publishedAt": "2024-10-30T10:00:06Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/TbW-CiiE4qc/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=TbW-CiiE4qc",
-      "viewCount": 325883
+      "viewCount": 326063
     },
     {
       "id": "298BkZOh5Kk",
@@ -74,7 +74,7 @@
       "publishedAt": "2024-02-23T10:30:08Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/298BkZOh5Kk/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=298BkZOh5Kk",
-      "viewCount": 237016
+      "viewCount": 237117
     },
     {
       "id": "0Fo_d_urF44",
@@ -82,7 +82,7 @@
       "publishedAt": "2023-11-01T09:00:00Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/0Fo_d_urF44/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=0Fo_d_urF44",
-      "viewCount": 792575
+      "viewCount": 792792
     },
     {
       "id": "-KEjHc6hBoY",
@@ -90,7 +90,7 @@
       "publishedAt": "2024-01-10T10:00:07Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/-KEjHc6hBoY/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=-KEjHc6hBoY",
-      "viewCount": 377076
+      "viewCount": 377236
     },
     {
       "id": "JpnirVjRZKk",
@@ -98,7 +98,7 @@
       "publishedAt": "2024-08-15T09:00:28Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/JpnirVjRZKk/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=JpnirVjRZKk",
-      "viewCount": 585763
+      "viewCount": 586035
     },
     {
       "id": "7U5TyUYEPdo",
@@ -106,7 +106,7 @@
       "publishedAt": "2023-09-22T10:00:10Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/7U5TyUYEPdo/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=7U5TyUYEPdo",
-      "viewCount": 439464
+      "viewCount": 439609
     },
     {
       "id": "aWYbx6Z3nHo",
@@ -114,7 +114,7 @@
       "publishedAt": "2023-10-11T10:00:10Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/aWYbx6Z3nHo/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=aWYbx6Z3nHo",
-      "viewCount": 365127
+      "viewCount": 365266
     },
     {
       "id": "rnqUL0k2fgA",
@@ -122,7 +122,7 @@
       "publishedAt": "2024-06-08T10:00:06Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/rnqUL0k2fgA/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=rnqUL0k2fgA",
-      "viewCount": 182217
+      "viewCount": 182295
     },
     {
       "id": "5XrleiRau-Y",
@@ -130,7 +130,7 @@
       "publishedAt": "2025-08-29T09:30:06Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/5XrleiRau-Y/hqdefault.jpg",
       "url": "https://www.youtube.com/watch?v=5XrleiRau-Y",
-      "viewCount": 499417
+      "viewCount": 499599
     },
     {
       "id": "uACQFtlwksc",
@@ -138,7 +138,7 @@
       "publishedAt": "2025-08-29T09:30:39Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/uACQFtlwksc/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=uACQFtlwksc",
-      "viewCount": 400318
+      "viewCount": 400455
     },
     {
       "id": "WSO6aGAk1PY",
@@ -146,7 +146,7 @@
       "publishedAt": "2023-11-15T10:30:11Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/WSO6aGAk1PY/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=WSO6aGAk1PY",
-      "viewCount": 460134
+      "viewCount": 460266
     },
     {
       "id": "79y3SpAZR5M",
@@ -154,7 +154,7 @@
       "publishedAt": "2024-06-12T11:15:07Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/79y3SpAZR5M/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=79y3SpAZR5M",
-      "viewCount": 424020
+      "viewCount": 424218
     },
     {
       "id": "QFeBm_G-hYA",
@@ -162,7 +162,7 @@
       "publishedAt": "2024-01-14T10:00:09Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/QFeBm_G-hYA/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=QFeBm_G-hYA",
-      "viewCount": 206029
+      "viewCount": 206166
     },
     {
       "id": "3HDzfxbtdf8",
@@ -170,7 +170,7 @@
       "publishedAt": "2024-07-02T10:15:07Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/3HDzfxbtdf8/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=3HDzfxbtdf8",
-      "viewCount": 159318
+      "viewCount": 159407
     },
     {
       "id": "vNzrizoRwiM",
@@ -178,7 +178,7 @@
       "publishedAt": "2025-10-24T08:30:06Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/vNzrizoRwiM/hqdefault.jpg",
       "url": "https://www.youtube.com/watch?v=vNzrizoRwiM",
-      "viewCount": 224097
+      "viewCount": 224309
     },
     {
       "id": "uKC5SHASHsc",
@@ -186,7 +186,7 @@
       "publishedAt": "2024-09-18T10:00:07Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/uKC5SHASHsc/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=uKC5SHASHsc",
-      "viewCount": 383087
+      "viewCount": 383266
     },
     {
       "id": "-XE639NGx1w",
@@ -194,7 +194,7 @@
       "publishedAt": "2023-12-27T10:00:09Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/-XE639NGx1w/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=-XE639NGx1w",
-      "viewCount": 163458
+      "viewCount": 163532
     },
     {
       "id": "eGbUru4LNS0",
@@ -202,7 +202,7 @@
       "publishedAt": "2023-10-27T10:00:10Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/eGbUru4LNS0/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=eGbUru4LNS0",
-      "viewCount": 598208
+      "viewCount": 598347
     },
     {
       "id": "6AOZVV74dOM",
@@ -210,7 +210,7 @@
       "publishedAt": "2025-07-31T13:03:16Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/6AOZVV74dOM/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=6AOZVV74dOM",
-      "viewCount": 190297
+      "viewCount": 190417
     },
     {
       "id": "e4J63hTFxmw",
@@ -218,7 +218,7 @@
       "publishedAt": "2024-11-17T10:30:06Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/e4J63hTFxmw/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=e4J63hTFxmw",
-      "viewCount": 128387
+      "viewCount": 128470
     },
     {
       "id": "umDggIQFXc0",
@@ -226,7 +226,7 @@
       "publishedAt": "2024-11-10T11:00:06Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/umDggIQFXc0/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=umDggIQFXc0",
-      "viewCount": 80679
+      "viewCount": 80740
     },
     {
       "id": "FuopD80efP4",
@@ -234,7 +234,7 @@
       "publishedAt": "2024-08-14T10:00:07Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/FuopD80efP4/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=FuopD80efP4",
-      "viewCount": 123353
+      "viewCount": 123404
     },
     {
       "id": "kIIuCaK9opE",
@@ -242,7 +242,7 @@
       "publishedAt": "2024-03-31T10:00:07Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/kIIuCaK9opE/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=kIIuCaK9opE",
-      "viewCount": 166339
+      "viewCount": 166405
     },
     {
       "id": "jN4PX2HeOuY",
@@ -250,7 +250,7 @@
       "publishedAt": "2025-07-06T10:00:06Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/jN4PX2HeOuY/hqdefault.jpg",
       "url": "https://www.youtube.com/watch?v=jN4PX2HeOuY",
-      "viewCount": 115149
+      "viewCount": 115207
     },
     {
       "id": "X2intgVp7do",
@@ -258,7 +258,7 @@
       "publishedAt": "2023-12-20T10:00:10Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/X2intgVp7do/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=X2intgVp7do",
-      "viewCount": 120737
+      "viewCount": 120788
     },
     {
       "id": "wZoWoxa3CdY",
@@ -266,7 +266,7 @@
       "publishedAt": "2024-01-19T10:30:08Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/wZoWoxa3CdY/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=wZoWoxa3CdY",
-      "viewCount": 222566
+      "viewCount": 222676
     },
     {
       "id": "yqN6IrUa6ZQ",
@@ -274,7 +274,7 @@
       "publishedAt": "2023-08-30T10:00:10Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/yqN6IrUa6ZQ/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=yqN6IrUa6ZQ",
-      "viewCount": 261747
+      "viewCount": 261845
     },
     {
       "id": "uRV_FZ1UdeQ",
@@ -282,7 +282,7 @@
       "publishedAt": "2023-09-03T03:00:10Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/uRV_FZ1UdeQ/hqdefault.jpg",
       "url": "https://www.youtube.com/watch?v=uRV_FZ1UdeQ",
-      "viewCount": 74582
+      "viewCount": 74600
     },
     {
       "id": "pGdmyUhfMZI",
@@ -290,7 +290,7 @@
       "publishedAt": "2025-10-24T08:01:03Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/pGdmyUhfMZI/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=pGdmyUhfMZI",
-      "viewCount": 256278
+      "viewCount": 256417
     },
     {
       "id": "eUDZhpl-2e4",
@@ -298,7 +298,7 @@
       "publishedAt": "2022-07-21T10:00:16Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/eUDZhpl-2e4/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=eUDZhpl-2e4",
-      "viewCount": 474377
+      "viewCount": 474507
     },
     {
       "id": "jzPOZ0E4rug",
@@ -306,7 +306,7 @@
       "publishedAt": "2023-06-30T10:00:09Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/jzPOZ0E4rug/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=jzPOZ0E4rug",
-      "viewCount": 298217
+      "viewCount": 298273
     },
     {
       "id": "IJ_5MlgeKUs",
@@ -314,7 +314,7 @@
       "publishedAt": "2022-10-14T09:30:13Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/IJ_5MlgeKUs/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=IJ_5MlgeKUs",
-      "viewCount": 531158
+      "viewCount": 531246
     },
     {
       "id": "Ts_k1UvS_uQ",
@@ -322,7 +322,7 @@
       "publishedAt": "2022-09-20T09:30:09Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/Ts_k1UvS_uQ/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=Ts_k1UvS_uQ",
-      "viewCount": 468334
+      "viewCount": 468411
     },
     {
       "id": "pD6Szr18mbk",
@@ -330,7 +330,7 @@
       "publishedAt": "2024-06-28T10:00:07Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/pD6Szr18mbk/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=pD6Szr18mbk",
-      "viewCount": 283617
+      "viewCount": 283735
     },
     {
       "id": "jRrVWTfTlqA",
@@ -338,7 +338,7 @@
       "publishedAt": "2022-11-16T10:00:09Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/jRrVWTfTlqA/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=jRrVWTfTlqA",
-      "viewCount": 243897
+      "viewCount": 243942
     },
     {
       "id": "OzvhennI1Lk",
@@ -346,7 +346,7 @@
       "publishedAt": "2023-09-29T09:00:21Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/OzvhennI1Lk/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=OzvhennI1Lk",
-      "viewCount": 485716
+      "viewCount": 485814
     },
     {
       "id": "fCAkL1G1hm4",
@@ -354,7 +354,7 @@
       "publishedAt": "2023-09-29T10:00:09Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/fCAkL1G1hm4/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=fCAkL1G1hm4",
-      "viewCount": 499887
+      "viewCount": 499976
     },
     {
       "id": "BGZLhvqj_yc",
@@ -362,7 +362,7 @@
       "publishedAt": "2023-06-30T09:00:07Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/BGZLhvqj_yc/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=BGZLhvqj_yc",
-      "viewCount": 437046
+      "viewCount": 437128
     },
     {
       "id": "8O_Bco0Lv1U",
@@ -370,7 +370,7 @@
       "publishedAt": "2023-05-28T09:00:05Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/8O_Bco0Lv1U/hqdefault.jpg",
       "url": "https://www.youtube.com/watch?v=8O_Bco0Lv1U",
-      "viewCount": 484959
+      "viewCount": 485022
     },
     {
       "id": "uE06TrZjK1M",
@@ -378,7 +378,7 @@
       "publishedAt": "2022-07-12T09:30:09Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/uE06TrZjK1M/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=uE06TrZjK1M",
-      "viewCount": 553648
+      "viewCount": 553722
     },
     {
       "id": "PDve_v4ccto",
@@ -386,7 +386,7 @@
       "publishedAt": "2024-06-28T09:00:30Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/PDve_v4ccto/hqdefault.jpg",
       "url": "https://www.youtube.com/watch?v=PDve_v4ccto",
-      "viewCount": 279450
+      "viewCount": 279529
     },
     {
       "id": "e0ns3Ugx47g",
@@ -394,7 +394,7 @@
       "publishedAt": "2023-10-04T10:00:11Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/e0ns3Ugx47g/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=e0ns3Ugx47g",
-      "viewCount": 433436
+      "viewCount": 433532
     },
     {
       "id": "rd5zHTECZ0o",
@@ -402,7 +402,7 @@
       "publishedAt": "2023-08-25T09:00:41Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/rd5zHTECZ0o/hqdefault.jpg",
       "url": "https://www.youtube.com/watch?v=rd5zHTECZ0o",
-      "viewCount": 367861
+      "viewCount": 367913
     },
     {
       "id": "2pWXkD_lHW0",
@@ -410,7 +410,7 @@
       "publishedAt": "2022-09-20T09:00:01Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/2pWXkD_lHW0/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=2pWXkD_lHW0",
-      "viewCount": 547168
+      "viewCount": 547233
     },
     {
       "id": "Nhb47eSiA3U",
@@ -418,7 +418,7 @@
       "publishedAt": "2023-10-15T10:30:08Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/Nhb47eSiA3U/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=Nhb47eSiA3U",
-      "viewCount": 338522
+      "viewCount": 338620
     },
     {
       "id": "xe2W1v4Q5mk",
@@ -426,7 +426,7 @@
       "publishedAt": "2025-05-04T10:00:06Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/xe2W1v4Q5mk/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=xe2W1v4Q5mk",
-      "viewCount": 115589
+      "viewCount": 115659
     },
     {
       "id": "hpPEDiryZZg",
@@ -434,7 +434,7 @@
       "publishedAt": "2025-05-04T09:30:33Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/hpPEDiryZZg/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=hpPEDiryZZg",
-      "viewCount": 65803
+      "viewCount": 65829
     },
     {
       "id": "nlHB-S3CUBU",
@@ -442,7 +442,7 @@
       "publishedAt": "2024-07-16T09:00:44Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/nlHB-S3CUBU/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=nlHB-S3CUBU",
-      "viewCount": 528217
+      "viewCount": 528503
     },
     {
       "id": "7y5ZoM2mfg8",
@@ -450,7 +450,7 @@
       "publishedAt": "2025-11-12T10:00:06Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/7y5ZoM2mfg8/hqdefault.jpg",
       "url": "https://www.youtube.com/watch?v=7y5ZoM2mfg8",
-      "viewCount": 83996
+      "viewCount": 84034
     },
     {
       "id": "w3ZFe_bOY28",
@@ -458,7 +458,7 @@
       "publishedAt": "2024-06-19T10:00:09Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/w3ZFe_bOY28/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=w3ZFe_bOY28",
-      "viewCount": 272237
+      "viewCount": 272359
     },
     {
       "id": "BU5L_Ba0UII",
@@ -466,7 +466,7 @@
       "publishedAt": "2024-10-19T10:00:06Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/BU5L_Ba0UII/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=BU5L_Ba0UII",
-      "viewCount": 103890
+      "viewCount": 103932
     },
     {
       "id": "Iz6ZZ8CWoc4",
@@ -474,7 +474,7 @@
       "publishedAt": "2025-12-07T10:00:06Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/Iz6ZZ8CWoc4/hqdefault.jpg",
       "url": "https://www.youtube.com/watch?v=Iz6ZZ8CWoc4",
-      "viewCount": 78256
+      "viewCount": 78305
     },
     {
       "id": "CKhgEg5T1vE",
@@ -482,7 +482,7 @@
       "publishedAt": "2024-10-05T10:00:26Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/CKhgEg5T1vE/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=CKhgEg5T1vE",
-      "viewCount": 186706
+      "viewCount": 186798
     },
     {
       "id": "H71uf1oT6AQ",
@@ -490,7 +490,7 @@
       "publishedAt": "2024-03-26T10:00:07Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/H71uf1oT6AQ/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=H71uf1oT6AQ",
-      "viewCount": 119375
+      "viewCount": 119403
     },
     {
       "id": "5U5cNZkkGwk",
@@ -498,7 +498,7 @@
       "publishedAt": "2023-12-17T12:00:08Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/5U5cNZkkGwk/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=5U5cNZkkGwk",
-      "viewCount": 165030
+      "viewCount": 165074
     }
   ]
 }
